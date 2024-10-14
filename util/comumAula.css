@@ -12,8 +12,8 @@ body {
 
 body {
   font-family: 'Helvetica Neue', Arial, sans-serif;
-  background-color: #2e2e2e; /* Fundo cinza escuro */
-  color: #dcdcdc; /* Texto em cinza claro */
+  background-color: #222; /* Fundo cinza escuro */
+  color: #dcdcdc; /* Texto cinza claro */
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -43,11 +43,94 @@ footer {
   padding: 10px 0;
 }
 
+/* Estilos para o conteúdo */
+.article-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.article-content h2 {
+  font-size: 1.8em;
+  margin: 40px 0 20px; /* Aumentado o espaço acima */
+  color: #9d5bd2; /* Tom de roxo para subtítulos */
+}
+
+.article-content h3 {
+  font-size: 1.5em;
+  margin: 30px 0 15px; /* Espaçamento acima e abaixo */
+  color: #a879d9;
+}
+
+.article-content p {
+  font-size: 1em;
+  line-height: 1.8; /* Aumentado para melhorar a legibilidade */
+  margin-bottom: 20px;
+  color: #dcdcdc;
+}
+
+.article-content ul,
+.article-content ol {
+  margin-left: 40px;
+  margin-bottom: 20px;
+  line-height: 1.8; /* Consistência com os parágrafos */
+}
+
+.article-content li {
+  margin-bottom: 10px;
+}
+
+.article-content li:last-child {
+  margin-bottom: 0; /* Remove o espaçamento do último item */
+}
+
+.article-content strong {
+  color: #ffffff; /* Destaca textos em negrito */
+}
+
+.article-content code,
+.article-content pre code {
+  color: #e6e6e6;
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+}
+
+.article-content code.destaque {
+  background-color: #333;
+}
+
+/* Links */
+a {
+  color: #a879d9; /* Tom de roxo claro para links */
+  text-decoration: none;
+}
+
+a:hover:not(.button) {
+  text-decoration: underline;
+}
+
+/* Botões */
+.button {
+  display: inline-block;
+  background-color: #7b24b1; /* Tom de roxo médio */
+  color: #fff;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.button:hover {
+  background-color: #9d5bd2; /* Tom de roxo mais claro */
+}
+
 /* Estilos para os blocos de código */
 .code-block {
   position: relative;
   margin: 20px 0;
-  background-color: #3a3a3a; /* Fundo do bloco de código */
+  background-color: #333; /* Fundo do bloco de código */
   border-radius: 8px;
   overflow: hidden;
 }
@@ -74,45 +157,6 @@ footer {
   background-color: #9d5bd2; /* Tom de roxo mais claro ao passar o mouse */
 }
 
-/* Estilos para o conteúdo */
-.article-content {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.article-content h2 {
-  font-size: 1.8em;
-  margin: 20px 0;
-  color: #9d5bd2; /* Tom de roxo para subtítulos */
-}
-
-.article-content p {
-  font-size: 1em;
-  line-height: 1.6;
-  margin-bottom: 20px;
-  color: #dcdcdc;
-}
-
-.article-content ul {
-  list-style-type: disc;
-  margin-left: 20px;
-  margin-bottom: 20px;
-}
-
-.article-content li {
-  margin-bottom: 10px;
-}
-
-/* Links */
-a {
-  color: #a879d9; /* Tom de roxo claro para links */
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
 /* Imagens */
 .article-content img {
   max-width: 100%;
@@ -120,13 +164,57 @@ a:hover {
   margin: 20px 0;
 }
 
-/* Código inline */
-.article-content code {
-  background-color: #444;
-  color: #e6e6e6;
+/* Estilização para termos com tooltip */
+.term {
+  background-color: rgba(183, 36, 177, 0.1);
+  color: #a879d9;
+  font-family: 'Courier New', monospace;
   padding: 2px 4px;
   border-radius: 4px;
-  font-family: 'Courier New', monospace;
+  font-size: 0.95rem;
+  position: relative;
+  cursor: help;
+}
+
+/* Tooltip customizado */
+.term::after {
+  content: attr(text); /* Pega o texto do atributo text */
+  position: absolute;
+  bottom: 125%; /* Posiciona acima do texto */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #4b1670;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 4px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease-in-out;
+  z-index: 1;
+}
+
+/* Triângulo abaixo do tooltip */
+.term::before {
+  content: '';
+  position: absolute;
+  bottom: 115%; /* Ajuste para alinhar com o tooltip */
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent #4b1670 transparent;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease-in-out;
+  z-index: 1;
+}
+
+/* Mostrar o tooltip ao passar o mouse */
+.term:hover::after,
+.term:hover::before {
+  opacity: 1;
+  visibility: visible;
 }
 
 /* Tabelas */
@@ -149,4 +237,11 @@ a:hover {
 
 .article-content td {
   background-color: #2e2e2e;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .article-content {
+    padding: 0 10px;
+  }
 }
