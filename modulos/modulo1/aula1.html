@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Aula 1</title>
     <!-- Estilos principais -->
     <link rel="stylesheet" href="../../util/comumAula.css" />
     <!-- Estilos para o Prism.js -->
@@ -16,27 +15,517 @@
   </head>
   <body>
     <header>
-      <h1>Título da Aula</h1>
+      <h1>Preparando o Ambiente</h1>
     </header>
     <main>
       <div class="article-content">
-        <a href="../../index.html">Voltar para a Página Principal.</a>
+        <a href="../../index.html" class="button"
+          >Voltar para a Página Principal</a
+        >
+
         <!-- Conteúdo da aula -->
-        <h2>Bem-vindo à aula sobre XYZ.</h2>
+        <h2>Bem-vindo à Primeira Aula do Curso de Programação em JavaScript</h2>
+
+        <p>
+          Nesta primeira aula, vamos configurar o ambiente de desenvolvimento
+          necessário para iniciar seus projetos de
+          <span
+            class="term"
+            text="JavaScript é uma linguagem de programação utilizada para desenvolvimento web"
+            >JavaScript</span
+          >. Ter um ambiente bem configurado é essencial para garantir uma
+          experiência de desenvolvimento eficiente e produtiva.
+        </p>
+
+        <h3>O que é JavaScript?</h3>
+
+        <p>
+          O
+          <span
+            class="term"
+            text="JavaScript é uma linguagem de programação que permite criar interatividade nas páginas web"
+            >JavaScript</span
+          >
+          é uma linguagem de programação amplamente utilizada para desenvolver
+          aplicações web interativas. Ela é executada no navegador do usuário,
+          permitindo criar desde efeitos simples até aplicações web complexas.
+        </p>
+
+        <p>
+          Originalmente criado para adicionar interatividade às páginas HTML
+          estáticas, o JavaScript evoluiu significativamente e agora é usado
+          tanto no front-end quanto no back-end (com o auxílio do
+          <span
+            class="term"
+            text="Node.js é um ambiente de execução para JavaScript no servidor"
+            >Node.js</span
+          >).
+        </p>
+
+        <h3>Como o JavaScript Roda no Navegador?</h3>
+
+        <p>
+          Todos os navegadores modernos possuem um motor JavaScript embutido que
+          interpreta e executa o código JavaScript presente nas páginas web. Por
+          exemplo, o Google Chrome utiliza o motor V8, enquanto o Firefox
+          utiliza o SpiderMonkey.
+        </p>
+
+        <p>
+          Quando você visita uma página web que contém JavaScript, o navegador
+          baixa o código e o executa localmente, permitindo interações dinâmicas
+          sem a necessidade de recarregar a página.
+        </p>
+
+        <h3>Programando JavaScript Diretamente no Navegador</h3>
+
+        <p>
+          Você pode experimentar e executar código JavaScript diretamente no seu
+          navegador usando as ferramentas de desenvolvedor. Isso é útil para
+          testes rápidos ou para aprender os fundamentos da linguagem.
+        </p>
+
+        <p>Para acessar o console JavaScript do navegador:</p>
+
+        <ol>
+          <li>Abra o navegador (Chrome, Firefox, Edge, etc.).</li>
+          <li>
+            Pressione <code class="destaque">F12</code> ou
+            <code class="destaque">Ctrl + Shift + I</code> (<code
+              class="destaque"
+              >Cmd + Option + I</code
+            >
+            no Mac) para abrir as ferramentas de desenvolvedor.
+          </li>
+          <li>Clique na aba <strong>Console</strong>.</li>
+          <li>
+            Você pode digitar código JavaScript diretamente no console e
+            pressionar <code class="destaque">Enter</code> para executá-lo.
+          </li>
+        </ol>
+
+        <p>Exemplo:</p>
+
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+        console.log('Olá, mundo!');
+                  </code></pre>
+        </div>
+
+        <p>
+          Ao executar o código acima no console, você verá a mensagem
+          <em>Olá, mundo!</em> exibida no console.
+        </p>
+
+        <h3>Ambientes Online para Programar em JavaScript</h3>
+
+        <p>
+          Além das ferramentas locais, existem ambientes online que permitem
+          escrever e executar código JavaScript diretamente no navegador, sem a
+          necessidade de instalar nada. Alguns dos mais populares são:
+        </p>
+
+        <ul>
+          <li>
+            <a href="https://codepen.io" target="_blank" rel="noopener"
+              >CodePen</a
+            >: Uma plataforma online para escrever e compartilhar código HTML,
+            CSS e JavaScript.
+          </li>
+          <li>
+            <a href="https://jsfiddle.net" target="_blank" rel="noopener"
+              >JSFiddle</a
+            >: Um editor online para testar e compartilhar snippets de código
+            JavaScript.
+          </li>
+          <li>
+            <a href="https://replit.com" target="_blank" rel="noopener"
+              >Repl.it</a
+            >: Um ambiente de desenvolvimento online que suporta várias
+            linguagens, incluindo JavaScript.
+          </li>
+        </ul>
+
+        <p>
+          Esses ambientes são excelentes para praticar, testar ideias
+          rapidamente e compartilhar código com outras pessoas.
+        </p>
+
+        <h3>Ferramentas Necessárias</h3>
+
+        <p>
+          Embora seja possível programar diretamente no navegador ou em
+          ambientes online, é recomendável configurar um ambiente local para
+          projetos mais complexos. As principais ferramentas que você precisará
+          instalar são:
+        </p>
+
+        <ul>
+          <li>
+            <a
+              href="https://code.visualstudio.com/download"
+              target="_blank"
+              rel="noopener"
+              >Visual Studio Code</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://nodejs.org/en/download/"
+              target="_blank"
+              rel="noopener"
+              >Node.js</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://git-scm.com/downloads"
+              target="_blank"
+              rel="noopener"
+              >Git</a
+            >
+          </li>
+        </ul>
+
+        <p>
+          Nesta primeira aula, vamos configurar o ambiente de desenvolvimento
+          necessário para iniciar seus projetos de
+          <span
+            class="term"
+            text="JavaScript é uma linguagem de programação utilizada para desenvolvimento web"
+            >JavaScript</span
+          >. Ter um ambiente bem configurado é essencial para garantir uma
+          experiência de desenvolvimento eficiente e produtiva.
+        </p>
+
+        <h3>Instalando o Visual Studio Code</h3>
+
+        <p>
+          O
+          <span
+            class="term"
+            text="Visual Studio Code é um editor de código-fonte desenvolvido pela Microsoft"
+            >Visual Studio Code</span
+          >, também conhecido como VSCode, é um editor de código-fonte poderoso
+          e extensível. Vamos seguir os passos para instalá-lo:
+        </p>
+
+        <ol>
+          <li>
+            Acesse o site oficial do VSCode através do link acima e baixe a
+            versão adequada para o seu sistema operacional.
+          </li>
+          <li>
+            Siga as instruções de instalação padrão do seu sistema operacional.
+          </li>
+          <li>
+            Após a instalação, abra o VSCode para verificar se tudo está
+            funcionando corretamente.
+          </li>
+        </ol>
+
+        <h3>Instalando Node.js</h3>
+
+        <p>
+          O
+          <span
+            class="term"
+            text="Node.js é um ambiente de execução para JavaScript no servidor"
+            >Node.js</span
+          >
+          permite executar JavaScript fora do navegador, o que é fundamental
+          para o desenvolvimento de aplicações modernas.
+        </p>
+
+        <ol>
+          <li>
+            Acesse o site oficial do Node.js através do link acima e baixe a
+            versão LTS (Long Term Support) recomendada.
+          </li>
+          <li>
+            Siga as instruções de instalação padrão do seu sistema operacional.
+          </li>
+          <li>
+            Após a instalação, abra o terminal ou prompt de comando e verifique
+            a instalação executando:
+            <pre><code class="language-bash">node -v</code></pre>
+            e
+            <pre><code class="language-bash">npm -v</code></pre>
+            Esses comandos devem retornar as versões instaladas do Node.js e do
+            <span
+              class="term"
+              text="npm é o gerenciador de pacotes padrão para o Node.js"
+              >npm</span
+            >.
+          </li>
+        </ol>
+
+        <h3>Instalando Git</h3>
+
+        <p>
+          O
+          <span
+            class="term"
+            text="Git é um sistema de controle de versões distribuído"
+            >Git</span
+          >
+          é essencial para o controle de versões e colaboração em projetos de
+          desenvolvimento.
+        </p>
+
+        <ol>
+          <li>
+            Acesse o site oficial do Git através do link acima e baixe a versão
+            adequada para o seu sistema operacional.
+          </li>
+          <li>
+            Siga as instruções de instalação padrão do seu sistema operacional.
+          </li>
+          <li>
+            Após a instalação, abra o terminal ou prompt de comando e verifique
+            a instalação executando:
+            <pre><code class="language-bash">git --version</code></pre>
+            Este comando deve retornar a versão instalada do Git.
+          </li>
+        </ol>
+
+        <h3>Configurando Extensões no VSCode</h3>
+
+        <p>
+          Para otimizar seu ambiente de desenvolvimento no VSCode, é
+          recomendável instalar algumas extensões que facilitarão o trabalho com
+          JavaScript:
+        </p>
+
+        <ul>
+          <li>
+            <span
+              class="term"
+              text="Extensão que fornece snippets de código para JavaScript (ES6)"
+              >JavaScript (ES6) code snippets</span
+            >
+          </li>
+          <li>
+            <span
+              class="term"
+              text="Extensão que permite visualizar atualizações em tempo real no navegador"
+              >Live Server</span
+            >
+          </li>
+          <li>
+            <span
+              class="term"
+              text="Extensão que formata o código automaticamente de acordo com padrões pré-definidos"
+              >Prettier - Code formatter</span
+            >
+          </li>
+        </ul>
+
+        <p>Para instalar essas extensões:</p>
+
+        <ol>
+          <li>Abra o VSCode.</li>
+          <li>
+            Vá até a aba de <strong>Extensões</strong> clicando no ícone de
+            quadrados no menu lateral ou pressionando
+            <code class="destaque">Ctrl + Shift + X</code>.
+          </li>
+          <li>
+            Pesquise pelo nome da extensão desejada e clique em
+            <strong>Instalar</strong>.
+          </li>
+        </ol>
+
+        <h3>Configurando o VSCode</h3>
+
+        <p>
+          Após instalar as ferramentas e extensões, vamos configurar o VSCode
+          para otimizar seu ambiente de desenvolvimento. Para isso, iremos
+          ajustar o arquivo de configurações do VSCode:
+        </p>
+
+        <p>
+          Abra o arquivo de configurações do VSCode pressionando
+          <code class="destaque">Ctrl + ,</code> ou navegando até
+          <strong>File > Preferences > Settings</strong>. Em seguida, adicione
+          ou atualize as seguintes configurações no seu arquivo
+          <strong>settings.json</strong>:
+        </p>
 
         <!-- Bloco de código -->
         <div class="code-block">
           <button class="copy-button">Copiar</button>
           <pre><code class="language-javascript">
-// Seu código aqui
-function saudacao(nome) {
-  return `Olá, ${nome}!`;
-}
+            {
+              "editor.tabSize": 2,
+              "editor.fontFamily": "'Fira Code', Consolas, 'Courier New', monospace",
+              "editor.fontLigatures": true,
+              "editor.fontSize": 18,
+              "editor.lineHeight": 27,
+              "editor.letterSpacing": 0.5,
+              "editor.defaultFormatter": "esbenp.prettier-vscode",
+              "editor.formatOnSave": true,
+              "prettier.singleQuote": true,
+              "[html]": {
+                "editor.defaultFormatter": "esbenp.prettier-vscode"
+              },
+              "[css]": {
+                "editor.defaultFormatter": "esbenp.prettier-vscode"
+              },
+              "[json]": {
+                "editor.defaultFormatter": "esbenp.prettier-vscode"
+              },
+              "[javascript]": {
+                "editor.defaultFormatter": "esbenp.prettier-vscode"
+              },
+              "workbench.activityBar.location": "hidden",
+              "liveServer.settings.donotShowInfoMsg": true
+            }
           </code></pre>
         </div>
 
+        <p>Essas configurações fazem o seguinte:</p>
+
+        <ul>
+          <li>
+            <strong>Tab Size:</strong> Define o tamanho da tabulação para 2
+            espaços.
+          </li>
+          <li>
+            <strong>Font Family:</strong> Define a fonte usada no editor,
+            incluindo ligaduras para melhor visualização do código (tenha sua
+            fonte baixada).
+          </li>
+          <li>
+            <strong>Font Ligatures:</strong> Ativa ligaduras de fonte, que
+            melhoram a legibilidade do código.
+          </li>
+          <li>
+            <strong>Font Size:</strong> Define o tamanho da fonte para 18px.
+          </li>
+          <li>
+            <strong>Line Height:</strong> Define a altura da linha para 27px.
+          </li>
+          <li>
+            <strong>Letter Spacing:</strong> Define o espaçamento entre letras
+            para 0.5px.
+          </li>
+          <li>
+            <strong>Default Formatter:</strong> Define o Prettier como
+            formatador padrão para o código.
+          </li>
+          <li>
+            <strong>Format On Save:</strong> Formata automaticamente o código ao
+            salvar.
+          </li>
+          <li>
+            <strong>Single Quote:</strong> Configura o Prettier para usar aspas
+            simples.
+          </li>
+          <li>
+            <strong>Activity Bar Location:</strong> Oculta a barra de atividades
+            lateral.
+          </li>
+          <li>
+            <strong>Live Server Settings:</strong> Oculta mensagens informativas
+            do Live Server.
+          </li>
+        </ul>
+
+        <h3>Verificando a Configuração</h3>
+
+        <p>
+          Para garantir que todas as ferramentas estejam corretamente instaladas
+          e configuradas, siga os passos abaixo:
+        </p>
+
+        <ol>
+          <li>Abra o VSCode e crie um novo arquivo HTML (.html).</li>
+          <li>
+            Ao pressionar "!" o VSCode irá lhe auxiliar e criar a sintaxe
+            inicial do HTML (falaremos disso em outras aulas).
+          </li>
+          <li>
+            Dentro da tag
+            <span
+              class="term"
+              text="A tag <body> define o corpo do documento HTML, onde o conteúdo visível da página é inserido."
+              >&lt;body&gt;</span
+            >, crie uma tag
+            <span
+              class="term"
+              text="A tag <script> é usada para incluir código JavaScript em uma página HTML."
+              >&lt;script&gt;</span
+            >, onde você pode digitar um código como:
+
+            <div class="code-block">
+              <button class="copy-button">Copiar</button>
+              <pre><code class="language-javascript">
+                function saudacao(nome) {
+                  return `Olá, ${nome}!`;
+                }
+                
+                console.log(saudacao('Matheus'));
+              </code></pre>
+            </div>
+          </li>
+          <li>
+            Isso deixará o seu código assim:
+            <div class="code-block">
+              <button class="copy-button">Copiar</button>
+              <pre><code class="language-html">
+                &lt;!DOCTYPE html&gt;
+                &lt;html lang=&quot;en&quot;&gt;
+                  &lt;head&gt;
+                    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+                    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
+                    &lt;title&gt;Document&lt;/title&gt;
+                  &lt;/head&gt;
+                  &lt;body&gt;
+                    &lt;script&gt;
+                      function saudacao(nome) {
+                        return `Ol&aacute;, ${nome}!`;
+                      }
+                
+                      console.log(saudacao('Matheus'));
+                    &lt;/script&gt;
+                  &lt;/body&gt;
+                &lt;/html&gt;
+              </code></pre>
+            </div>
+          </li>
+          <li>
+            Salve o arquivo pressionando <code class="destaque">Ctrl + S</code>.
+            O Prettier deve formatar automaticamente o código conforme as
+            configurações definidas.
+          </li>
+          <li>
+            Inicie o Live Server clicando com o botão direito no arquivo HTML
+            correspondente e selecionando
+            <strong>Open with Live Server</strong>. Uma nova aba do navegador
+            será aberta, exibindo sua página.
+          </li>
+          <li>
+            E verificando o console do navegador você verá a mensagem que
+            escreveu.
+          </li>
+        </ol>
+
+        <p>
+          Se todos os passos acima forem concluídos sem erros, seu ambiente está
+          pronto para iniciar o desenvolvimento de projetos em JavaScript!
+        </p>
+
         <!-- Mais conteúdo -->
-        <p>Continue explorando o conteúdo da aula...</p>
+        <p>
+          Na próxima aula, iremos explorar os fundamentos da linguagem
+          <span
+            class="term"
+            text="JavaScript é uma linguagem de programação que permite criar interatividade nas páginas web"
+            >JavaScript</span
+          >, começando com variáveis, funções e eventos.
+        </p>
       </div>
     </main>
     <footer>
