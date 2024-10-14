@@ -1,0 +1,139 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Garante que o body ocupe pelo menos toda a altura da viewport */
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  background-color: #222; /* Fundo cinza escuro */
+  color: #ccc; /* Texto cinza claro */
+}
+
+header {
+  background-color: #4b1670; /* Tom de roxo mais escuro */
+  color: #f7f7f7;
+  padding: 20px 0;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+main {
+  padding: 40px 20px;
+  flex: 1; /* Faz com que o main expanda para preencher o espaço disponível */
+}
+
+#cards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px; /* Espaço entre os módulos */
+}
+
+/* Estilos para cada módulo */
+.modulo {
+  background-color: #333; /* Fundo dos módulos */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.modulo-titulo {
+  font-size: 1.8em;
+  margin-bottom: 10px;
+  color: #9d5bd2; /* Tom de roxo claro */
+}
+
+.modulo-descricao {
+  font-size: 1em;
+  margin-bottom: 20px;
+  color: #b7b7b7; /* Cinza claro */
+}
+
+/* Container das aulas dentro do módulo */
+.aulas-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: flex-start;
+}
+
+/* Estilos dos cards */
+.card {
+  background-color: #3e3e3e; /* Fundo dos cards */
+  width: 300px;
+  border-radius: 8px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 20px;
+}
+
+.card-content h2 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  color: #9d5bd2; /* Tom de roxo claro */
+}
+
+.card-content p {
+  font-size: 1em;
+  line-height: 1.6;
+  color: #b7b7b7; /* Texto cinza claro */
+}
+
+footer {
+  background-color: #4b1670;
+  color: #f7f7f7;
+  text-align: center;
+  padding: 10px 0;
+}
+
+/* Links */
+a {
+  color: #a879d9; /* Tom de roxo claro para links */
+  text-decoration: none;
+}
+
+a:hover:not(a.card) {
+  text-decoration: underline;
+}
+
+/* Botões (se houver) */
+.button {
+  background-color: #7b24b1; /* Tom de roxo médio */
+  color: #f7f7f7;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #9d5bd2; /* Tom de roxo mais claro */
+}

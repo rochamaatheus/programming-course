@@ -1,0 +1,152 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  background-color: #2e2e2e; /* Fundo cinza escuro */
+  color: #dcdcdc; /* Texto em cinza claro */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  background-color: #4b1670; /* Tom de roxo mais escuro */
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+main {
+  flex: 1;
+  padding: 40px 20px;
+}
+
+footer {
+  background-color: #4b1670; /* Mesmo tom do cabeçalho */
+  color: #f7f7f7;
+  text-align: center;
+  padding: 10px 0;
+}
+
+/* Estilos para os blocos de código */
+.code-block {
+  position: relative;
+  margin: 20px 0;
+  background-color: #3a3a3a; /* Fundo do bloco de código */
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.code-block pre {
+  margin: 0;
+  padding: 20px;
+  overflow-x: auto;
+}
+
+.copy-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #7b24b1; /* Tom de roxo médio */
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.copy-button:hover {
+  background-color: #9d5bd2; /* Tom de roxo mais claro ao passar o mouse */
+}
+
+/* Estilos para o conteúdo */
+.article-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.article-content h2 {
+  font-size: 1.8em;
+  margin: 20px 0;
+  color: #9d5bd2; /* Tom de roxo para subtítulos */
+}
+
+.article-content p {
+  font-size: 1em;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  color: #dcdcdc;
+}
+
+.article-content ul {
+  list-style-type: disc;
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+.article-content li {
+  margin-bottom: 10px;
+}
+
+/* Links */
+a {
+  color: #a879d9; /* Tom de roxo claro para links */
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Imagens */
+.article-content img {
+  max-width: 100%;
+  height: auto;
+  margin: 20px 0;
+}
+
+/* Código inline */
+.article-content code {
+  background-color: #444;
+  color: #e6e6e6;
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+}
+
+/* Tabelas */
+.article-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.article-content th,
+.article-content td {
+  border: 1px solid #555;
+  padding: 10px;
+  text-align: left;
+}
+
+.article-content th {
+  background-color: #3a3a3a;
+}
+
+.article-content td {
+  background-color: #2e2e2e;
+}
