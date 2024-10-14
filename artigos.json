@@ -4,31 +4,15 @@
     "module_description": "Neste módulo, você aprenderá os conceitos básicos de programação.",
     "aulas": [
       {
-        "title": "Aula 1: Introdução à Programação",
-        "description": "Aprenda os conceitos básicos de programação.",
+        "title": "Aula 1: Configurando ambiente",
+        "description": "Nesta aula você irá configurar o ambiente e ter seu primeiro contato com a linguagem.",
         "link": "modulos/modulo1/aula1.html"
-      },
-      {
-        "title": "Aula 2: Variáveis e Tipos de Dados",
-        "description": "Entenda como funcionam as variáveis.",
-        "link": "modulos/modulo1/aula2.html"
       }
     ]
   },
   {
     "module_title": "Módulo 2: Estruturas de Controle",
     "module_description": "Neste módulo, você aprenderá sobre estruturas de controle de fluxo.",
-    "aulas": [
-      {
-        "title": "Aula 1: Condicionais",
-        "description": "Aprenda sobre estruturas condicionais.",
-        "link": "modulos/modulo2/aula1.html"
-      },
-      {
-        "title": "Aula 2: Laços de Repetição",
-        "description": "Entenda como funcionam os loops.",
-        "link": "modulos/modulo2/aula2.html"
-      }
-    ]
+    "aulas": []
   }
 ]
