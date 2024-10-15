@@ -7,6 +7,11 @@
         "title": "Aula 1: Configurando ambiente",
         "description": "Nesta aula você irá configurar o ambiente e ter seu primeiro contato com a linguagem.",
         "link": "modulos/modulo1/aula1.html"
+      },
+      {
+        "title": "Aula 2: Variáveis",
+        "description": "Nesta aula você irá aprender alguns conceitos de variáveis e como elas se comportam no JavaScript.",
+        "link": "modulos/modulo1/aula2.html"
       }
     ]
   },
