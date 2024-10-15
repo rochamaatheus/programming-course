@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Estilos principais -->
+    <link rel="stylesheet" href="../../util/comumAula.css" />
+    <!-- Estilos para o Prism.js -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css"
+      rel="stylesheet"
+    />
+    <!-- Script do Prism.js -->
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"
+    ></script>
+    <title>Aula 2: Variáveis em JavaScript</title>
+  </head>
+  <body>
+    <header><h1>Desvendando Variáveis em JavaScript</h1></header>
+    <main>
+      <div class="article-content">
+        <a href="../../index.html" class="button"
+          >Voltar para a Página Principal</a
+        >
+        <!-- Introdução -->
+        <h2>Antes de Começar</h2>
+        <p>
+          Vamos iniciar nossa jornada pelo mundo das
+          <span
+            class="term"
+            text="Variáveis são espaços na memória do computador onde podemos armazenar valores que podem ser usados e manipulados pelo programa."
+            >variáveis</span
+          >
+          em
+          <span
+            class="term"
+            text="JavaScript é uma linguagem de programação usada para adicionar interatividade às páginas web."
+            >JavaScript</span
+          >! Antes de mergulharmos no código, precisamos preparar nosso ambiente
+          de trabalho criando alguns arquivos básicos.
+        </p>
+
+        <h3>
+          1. Criando o Arquivo
+          <span
+            class="term"
+            text="HTML (HyperText Markup Language) é a linguagem padrão para criar páginas web."
+            >HTML</span
+          >
+          (<code class="destaque">index.html</code>)
+        </h3>
+        <p>
+          No seu editor de código favorito, crie um novo arquivo chamado
+          <code class="destaque">index.html</code>. Esse arquivo será a base da
+          nossa página web, onde vamos estruturar o conteúdo que será exibido no
+          navegador.
+        </p>
+
+        <h3>
+          2. Criando o Arquivo
+          <span
+            class="term"
+            text="JavaScript é uma linguagem de programação usada para adicionar interatividade às páginas web."
+            >JavaScript</span
+          >
+          (<code class="destaque">script.js</code>)
+        </h3>
+        <p>
+          Ainda no mesmo local, crie um arquivo chamado
+          <code class="destaque">script.js</code>. Este será o arquivo onde
+          vamos escrever nosso código JavaScript para dar vida à nossa página.
+        </p>
+
+        <h3>3. Conectando o JavaScript ao HTML</h3>
+        <p>
+          Para que o código JavaScript funcione em nossa página web, precisamos
+          conectá-lo ao arquivo HTML. Para isso, adicione a seguinte linha de
+          código antes da tag de fechamento
+          <span
+            class="term"
+            text="A tag &lt;/body&gt; indica o fim do corpo do documento HTML."
+            >&lt;/body&gt;</span
+          >
+          no seu <code class="destaque">index.html</code>:
+        </p>
+
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-html"
+              >&lt;script src="script.js"&gt;&lt;/script&gt;</code
+            ></pre>
+        </div>
+
+        <!-- Conteúdo Principal -->
+        <h2>Variáveis: O Que São e Como Usá-las</h2>
+        <p>
+          Pense nas
+          <span
+            class="term"
+            text="Variáveis são espaços na memória do computador onde podemos armazenar valores que podem ser usados e manipulados pelo programa."
+            >variáveis</span
+          >
+          como pequenas caixas onde você pode guardar informações importantes
+          para o seu programa. Elas nos permitem armazenar, modificar e
+          reutilizar dados ao longo do código. Vamos descobrir como elas
+          funcionam em
+          <span
+            class="term"
+            text="JavaScript é uma linguagem de programação usada para adicionar interatividade às páginas web."
+            >JavaScript</span
+          >!
+        </p>
+
+        <h3>Por Que Usamos Variáveis?</h3>
+        <p>
+          As variáveis são essenciais porque nos permitem armazenar dados que
+          podem ser usados e manipulados pelo nosso programa. Sem elas, teríamos
+          que escrever os mesmos valores repetidamente, o que não é eficiente.
+          Usando variáveis, seguimos o princípio
+          <span
+            class="term"
+            text="DRY é uma sigla para 'Don't Repeat Yourself', um princípio da programação que incentiva a evitar repetições desnecessárias."
+            >DRY</span
+          >
+          (<em>Don't Repeat Yourself</em> ou "Não se Repita"), tornando nosso
+          código mais limpo e fácil de manter.
+        </p>
+
+        <h3>Como Declarar Variáveis</h3>
+        <p>
+          Em JavaScript, existem três palavras-chave para declarar variáveis:
+          <code class="destaque">var</code>, <code class="destaque">let</code> e
+          <code class="destaque">const</code>. Cada uma tem suas
+          particularidades. Vamos entender a diferença entre elas:
+        </p>
+
+        <ul>
+          <li>
+            <strong><code class="destaque">var</code></strong
+            >: A maneira tradicional de declarar variáveis. Tem
+            <span
+              class="term"
+              text="Escopo define onde uma variável está disponível no código. Em JavaScript, pode ser global, de função ou de bloco."
+              >escopo</span
+            >
+            global ou de função, o que pode levar a alguns comportamentos
+            inesperados se não for usado com cuidado.
+          </li>
+          <li>
+            <strong><code class="destaque">let</code></strong
+            >: Introduzido no
+            <span
+              class="term"
+              text="ES6, ou ECMAScript 2015, é a sexta edição do padrão ECMAScript, que trouxe várias melhorias para o JavaScript."
+              >ES6</span
+            >, permite declarar variáveis com
+            <span
+              class="term"
+              text="Escopo de bloco significa que a variável existe apenas dentro do bloco de código em que foi declarada, delimitado por chaves { }."
+              >escopo de bloco</span
+            >. É a opção recomendada para variáveis que precisam mudar de valor.
+          </li>
+          <li>
+            <strong><code class="destaque">const</code></strong
+            >: Também introduzido no ES6, permite declarar constantes, ou seja,
+            variáveis cujo valor não pode ser reatribuído. Também tem escopo de
+            bloco.
+          </li>
+        </ul>
+
+        <h3>Exemplos de Declaração</h3>
+
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+var cidade = 'Rio de Janeiro';
+let temperatura = 30;
+const pais = 'Brasil';
+          </code></pre>
+        </div>
+
+        <p>
+          No exemplo acima, declaramos três variáveis:
+          <code class="destaque">cidade</code> é uma string que armazena o nome
+          de uma cidade, <code class="destaque">temperatura</code> é um número
+          que representa a temperatura atual, e
+          <code class="destaque">pais</code> é uma constante que guarda o nome
+          de um país.
+        </p>
+
+        <h3>Manipulando Dados com Variáveis</h3>
+        <p>
+          Além de evitar repetições desnecessárias, as variáveis nos permitem
+          manipular e transformar dados de forma eficiente. Veja este exemplo:
+        </p>
+
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+let largura = 5;
+let altura = 10;
+let area = largura * altura;
+console.log(area); // 50
+          </code></pre>
+        </div>
+
+        <p>
+          Neste exemplo, calculamos a área de um retângulo multiplicando a
+          <code class="destaque">largura</code> pela
+          <code class="destaque">altura</code>. Se precisarmos alterar as
+          dimensões, basta modificar o valor das variáveis correspondentes.
+        </p>
+
+        <h3>Sintaxe da Declaração</h3>
+        <p>A sintaxe básica para declarar uma variável é:</p>
+
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">let nomeDaVariavel = valor;</code></pre>
+        </div>
+
+        <p>
+          Onde <code class="destaque">let</code> é a palavra-chave usada para
+          declarar a variável, <code class="destaque">nomeDaVariavel</code> é o
+          identificador que você escolhe, e
+          <code class="destaque">valor</code> é o dado que você está atribuindo.
+        </p>
+
+        <p>Por exemplo:</p>
+
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">const pi = 3.14;</code></pre>
+        </div>
+
+        <p>
+          Aqui, estamos declarando uma constante chamada
+          <code class="destaque">pi</code> e atribuindo o valor 3.14 a ela.
+        </p>
+
+        <h3>Declarando Múltiplas Variáveis</h3>
+        <p>Podemos declarar várias variáveis ao mesmo tempo usando vírgulas:</p>
+
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+let produto = 'Caderno', preco = 15, quantidade = 3;
+          </code></pre>
+        </div>
+
+        <p>Assim, declaramos três variáveis em uma única linha.</p>
+
+        <h3>Variáveis Sem Valor Inicial</h3>
+        <p>
+          Também é possível declarar uma variável sem atribuir um valor
+          imediatamente:
+        </p>
+
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+var resultado;
+console.log(resultado); // undefined
+          </code></pre>
+        </div>
+
+        <p>
+          Neste caso, a variável <code class="destaque">resultado</code> foi
+          declarada, mas não possui um valor atribuído ainda. Portanto, seu
+          valor é <code class="destaque">undefined</code>.
+        </p>
+
+        <h3>Regras para Nomear Variáveis</h3>
+        <p>Ao criar variáveis, precisamos seguir algumas regras:</p>
+
+        <ul>
+          <li>
+            Podem começar com letras, <code class="destaque">$</code> ou
+            <code class="destaque">_</code>.
+          </li>
+          <li>Não podem começar com números.</li>
+          <li>Não podem conter espaços ou caracteres especiais.</li>
+          <li>
+            Sensíveis a maiúsculas e minúsculas (<code class="destaque"
+              >nome</code
+            >
+            ≠ <code class="destaque">Nome</code>).
+          </li>
+          <li>
+            Não usar
+            <span
+              class="term"
+              text="Palavras reservadas são termos que já têm um significado especial na linguagem de programação e não podem ser usados como nomes de variáveis."
+              >palavras reservadas</span
+            >
+            da linguagem.
+          </li>
+        </ul>
+
+        <h3>Exemplos de Nomes Válidos e Inválidos</h3>
+
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+// Inválidos
+let 3dModel;
+let class;
+let meu-nome;
+// Válidos
+let $preco;
+let _resultado;
+let enderecoCliente;
+          </code></pre>
+        </div>
+
+        <h3>Conceito de Hoisting</h3>
+        <p>
+          Em JavaScript, existe um comportamento chamado
+          <span
+            class="term"
+            text="Hoisting é um comportamento do JavaScript onde declarações de variáveis e funções são movidas para o topo de seu escopo antes da execução do código."
+            >hoisting</span
+          >, onde as declarações de variáveis são movidas para o topo do escopo
+          durante a execução, mas as atribuições de valor não são. Isso pode
+          causar resultados inesperados se não entendermos como funciona.
+        </p>
+
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+console.log(saudacao); // undefined
+var saudacao = 'Olá!';
+          </code></pre>
+        </div>
+
+        <p>
+          Neste exemplo, ao tentar imprimir
+          <code class="destaque">saudacao</code> antes de declará-la, o
+          resultado é <code class="destaque">undefined</code>
+          por causa do hoisting da declaração, mas não da atribuição.
+        </p>
+
+        <h3>Reatribuindo Valores</h3>
+        <p>
+          Podemos mudar o valor de variáveis declaradas com
+          <code class="destaque">var</code> ou
+          <code class="destaque">let</code>, mas não com
+          <code class="destaque">const</code>.
+        </p>
+
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+var contador = 1;
+contador = 2; // Ok
+const pi = 3.14;
+pi = 3.1415; // Erro
+          </code></pre>
+        </div>
+
+        <p>
+          No exemplo acima, reatribuímos um novo valor à variável
+          <code class="destaque">contador</code>, o que é permitido. No entanto,
+          tentar alterar o valor da constante <code class="destaque">pi</code>
+          resulta em um erro, pois constantes não podem ser reatribuídas.
+        </p>
+
+        <!-- Exercícios -->
+        <h2>Hora de Praticar!</h2>
+        <p>
+          Vamos colocar em prática o que aprendemos. Tente resolver os
+          exercícios abaixo:
+        </p>
+
+        <ol>
+          <li>Crie uma variável para armazenar o nome de sua cidade natal.</li>
+          <li>Crie uma variável para o ano atual.</li>
+          <li>Declare uma constante para o número de meses no ano.</li>
+          <li>Declare uma variável sem valor para a temperatura atual.</li>
+          <li>
+            Atribua um valor à variável de temperatura que você acabou de criar.
+          </li>
+        </ol>
+
+        <p>
+          Excelente trabalho! Você está no caminho certo para dominar as
+          variáveis em JavaScript.
+        </p>
+
+        <p>Para a próxima aula veremos alguns tipos de dados!</p>
+      </div>
+    </main>
+    <footer>
+      <p>&copy; 2024 Matheus Rocha</p>
+    </footer>
+    <!-- Script personalizado para o bloco de código -->
+    <script src="../../util/codeBlock.js"></script>
+  </body>
+</html>
