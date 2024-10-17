@@ -137,8 +137,19 @@ a:hover:not(.button) {
 
 .code-block pre {
   margin: 0;
-  padding: 20px;
+  padding: 0 20px;
   overflow-x: auto;
+}
+
+pre {
+  tab-size: 4;
+  white-space: pre-wrap;
+}
+
+.code-block code {
+  display: block;
+  padding-left: 0;
+  text-indent: 0;
 }
 
 .copy-button {
