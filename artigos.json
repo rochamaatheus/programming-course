@@ -12,6 +12,11 @@
         "title": "Aula 2: Variáveis",
         "description": "Nesta aula você irá aprender alguns conceitos de variáveis e como elas se comportam no JavaScript.",
         "link": "modulos/modulo1/aula2.html"
+      },
+      {
+        "title": "Aula 3: Tipos de Dados",
+        "description": "Nesta aula, você irá explorar os diferentes tipos de dados no JavaScript e aprender a manipular strings de forma eficiente.",
+        "link": "modulos/modulo1/aula3.html"
       }
     ]
   },
