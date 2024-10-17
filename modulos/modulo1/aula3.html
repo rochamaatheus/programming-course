@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Estilos principais -->
+    <link rel="stylesheet" href="../../util/comumAula.css" />
+    <!-- Estilos para o Prism.js -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css"
+      rel="stylesheet"
+    />
+    <!-- Script do Prism.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+    <title>Aula 3: Tipos de Dados em JavaScript</title>
+  </head>
+  <body>
+    <header>
+      <h1>Explorando os Tipos de Dados em JavaScript</h1>
+    </header>
+    <main>
+      <div class="article-content">
+        <a href="../../index.html" class="button"
+          >Voltar para a Página Principal</a
+        >
+
+        <!-- Introdução -->
+        <h2>Introdução aos Tipos de Dados</h2>
+        <p>
+          Nesta aula, vamos aprofundar nosso conhecimento sobre os
+          <span
+            class="term"
+            text="Tipos de dados são categorias que definem quais valores uma variável pode assumir e quais operações podem ser realizadas com ela."
+          >
+            tipos de dados
+          </span>
+          em
+          <span
+            class="term"
+            text="JavaScript é uma linguagem de programação usada para adicionar interatividade às páginas web."
+          >
+            JavaScript
+          </span>
+          . Entender os diferentes tipos de dados é fundamental para escrever
+          código eficiente e evitar erros inesperados.
+        </p>
+
+        <h3>Os 7 Tipos de Dados</h3>
+        <p>
+          JavaScript possui sete tipos de dados primitivos e um tipo especial
+          que é o
+          <span
+            class="term"
+            text="Objetos são coleções de propriedades, e uma propriedade é uma associação entre um nome (ou chave) e um valor."
+          >
+            objeto</span
+          >. Aqui estão eles:
+        </p>
+
+        <ul>
+          <li>
+            <strong>String</strong>: Sequência de caracteres, usada para
+            representar texto.
+          </li>
+          <li><strong>Number</strong>: Números inteiros ou decimais.</li>
+          <li>
+            <strong>Boolean</strong>: Verdadeiro (<code class="destaque"
+              >true</code
+            >) ou falso (<code class="destaque">false</code>).
+          </li>
+          <li>
+            <strong>Undefined</strong>: Tipo de uma variável que foi declarada,
+            mas não possui valor.
+          </li>
+          <li>
+            <strong>Null</strong>: Representa intencionalmente a ausência de
+            valor.
+          </li>
+          <li>
+            <strong>Symbol</strong>: Novo em ES6, é um valor único e imutável.
+          </li>
+          <li>
+            <strong>BigInt</strong>: Novo em ES2020, utilizado para representar
+            números inteiros de precisão arbitrária.
+          </li>
+          <li>
+            <strong>Object</strong>: Coleção de propriedades, usado para
+            estruturar dados complexos.
+          </li>
+        </ul>
+
+        <p>
+          Todos os tipos acima são considerados primitivos, exceto o
+          <strong>Object</strong>, que é complexo e permite estruturar dados
+          mais elaborados.
+        </p>
+
+        <h3>Exemplos de Cada Tipo</h3>
+
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+var nome = 'André'; // String
+var idade = 28; // Number
+var possuiFaculdade = true; // Boolean
+var time; // Undefined
+var comida = null; // Null
+var simbolo = Symbol(); // Symbol
+var bigNumber = BigInt(123456789012345678901234567890); // BigInt
+var objetoQualquer = {}; // Object
+          </code></pre>
+        </div>
+
+        <p>
+          Note que
+          <span
+            class="term"
+            text="Dados primitivos são imutáveis, ou seja, não podem ser alterados depois de criados."
+          >
+            primitivos são dados imutáveis
+          </span>
+          . Isso significa que, quando você manipula um valor primitivo, está
+          trabalhando com uma cópia do valor, não com o valor original.
+        </p>
+
+        <h3>Verificando o Tipo de Dado</h3>
+        <p>
+          Podemos utilizar o operador
+          <code class="destaque">typeof</code> para verificar o tipo de dado de
+          uma variável:
+        </p>
+
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+var nome = 'André';
+console.log(typeof nome); // 'string'
+
+var idade = 28;
+console.log(typeof idade); // 'number'
+
+var possuiFaculdade = true;
+console.log(typeof possuiFaculdade); // 'boolean'
+
+var time;
+console.log(typeof time); // 'undefined'
+
+var comida = null;
+console.log(typeof comida); // 'object'
+
+var simbolo = Symbol();
+console.log(typeof simbolo); // 'symbol'
+
+var bigNumber = BigInt(12345678901234567890);
+console.log(typeof bigNumber); // 'bigint'
+
+var objetoQualquer = {};
+console.log(typeof objetoQualquer); // 'object'
+          </code></pre>
+        </div>
+
+        <p>
+          Uma curiosidade é que
+          <code class="destaque">typeof null</code> retorna
+          <code class="destaque">'object'</code>. Este é um comportamento legado
+          do JavaScript e pode ser confuso para iniciantes.
+        </p>
+
+        <!-- String -->
+        <h2>Trabalhando com Strings</h2>
+        <p>
+          Strings são cadeias de caracteres usadas para representar texto.
+          Podemos concatenar strings usando o operador
+          <code class="destaque">+</code> ou utilizar métodos de strings para
+          manipulá-las.
+        </p>
+
+        <h3>Concatenando Strings</h3>
+        <p>Exemplo de concatenação:</p>
+
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+var nome = 'Matheus';
+var sobrenome = 'Rocha';
+var nomeCompleto = nome + ' ' + sobrenome;
+console.log(nomeCompleto); // 'Matheus Rocha'
+          </code></pre>
+        </div>
+
+        <p>
+          Quando somamos um número a uma string, o resultado é sempre uma
+          string. Isso acontece devido à coerção de tipos, onde o JavaScript
+          converte o número em string para realizar a operação.
+        </p>
+
+        <h3>Exemplo com Números e Strings</h3>
+
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+var gols = 1000;
+var frase = 'Romário fez ' + gols + ' gols';
+console.log(frase); // 'Romário fez 1000 gols'
+          </code></pre>
+        </div>
+
+        <h3>Aspas Duplas, Simples e Template Strings</h3>
+        <p>
+          Podemos utilizar aspas simples (
+          <code class="destaque">'</code>), aspas duplas (
+          <code class="destaque">"</code>) ou
+          <span
+            class="term"
+            text="Template Strings permitem incorporar expressões e variáveis dentro de strings usando a sintaxe ${}."
+          >
+            Template Strings
+          </span>
+          (
+          <code class="destaque">`</code>) para criar strings. Exemplo:
+        </p>
+
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+'JavaScript é "super" fácil';
+"JavaScript é 'super' fácil";
+"JavaScript é \"super\" fácil";
+`JavaScript é "super" fácil`;
+          </code></pre>
+        </div>
+
+        <p>
+          Evite misturar tipos de aspas sem a devida escape, pois isso resultará
+          em erros de sintaxe.
+        </p>
+
+        <h3>Utilizando Template Strings</h3>
+        <p>
+          As Template Strings permitem interpolar variáveis e expressões dentro
+          de strings, facilitando a composição de textos dinâmicos.
+        </p>
+
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+var gols = 1000;
+var frase1 = 'Romário fez ' + gols + ' gols';
+var frase2 = `Romário fez ${gols} gols`; // Utilizando Template String
+console.log(frase2); // 'Romário fez 1000 gols'
+          </code></pre>
+        </div>
+
+        <p>
+          Dentro das chaves
+          <code class="destaque">${}</code>, podemos colocar expressões ou
+          variáveis.
+        </p>
+
+        <!-- Number -->
+        <h2>Trabalhando com Números</h2>
+        <p>
+          O tipo
+          <strong>Number</strong> em JavaScript é usado para representar tanto
+          números inteiros quanto de ponto flutuante. Também suporta notação
+          científica.
+        </p>
+
+        <h3>Exemplos de Números</h3>
+
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+var idade = 28;
+var preco = 199.99;
+var hex = 0xff; // Hexadecimal
+var expo = 2e10; // Notação científica
+          </code></pre>
+        </div>
+
+        <p>
+          Podemos realizar operações matemáticas básicas usando os operadores
+          aritméticos: <code class="destaque">+</code>,
+          <code class="destaque">-</code>, <code class="destaque">*</code>,
+          <code class="destaque">/</code>,
+          <code class="destaque">%</code> (módulo).
+        </p>
+
+        <h3>Operações Matemáticas</h3>
+
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+var soma = 10 + 5; // 15
+var subtracao = 10 - 5; // 5
+var multiplicacao = 10 * 5; // 50
+var divisao = 10 / 5; // 2
+var modulo = 10 % 3; // 1
+          </code></pre>
+        </div>
+
+        <p>
+          Cuidado ao realizar operações com números e strings, pois o resultado
+          pode não ser o esperado devido à coerção de tipos.
+        </p>
+
+        <h3>Exemplo de Coerção de Tipos</h3>
+
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+var resultado = '10' - 5; // 5
+var resultado2 = '10' + 5; // '105'
+          </code></pre>
+        </div>
+
+        <p>
+          No primeiro caso, a string '10' é convertida em número devido ao
+          operador de subtração. No segundo, o operador de soma concatena os
+          valores como strings.
+        </p>
+
+        <!-- Boolean -->
+        <h2>Trabalhando com Booleanos</h2>
+        <p>
+          O tipo
+          <strong>Boolean</strong> possui apenas dois valores: verdadeiro (<code
+            class="destaque"
+            >true</code
+          >) ou falso (<code class="destaque">false</code>). É muito utilizado
+          em estruturas de controle e comparações.
+        </p>
+
+        <h3>Exemplos de Booleanos</h3>
+
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+var possuiGraduacao = true;
+var possuiDoutorado = false;
+          </code></pre>
+        </div>
+
+        <p>
+          Podemos utilizar operadores de comparação para obter valores
+          booleanos:
+        </p>
+
+        <h3>Operadores de Comparação</h3>
+
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+var maior = 10 > 5; // true
+var igual = 10 === 10; // true
+var diferente = 10 !== 5; // true
+          </code></pre>
+        </div>
+
+        <!-- Undefined e Null -->
+        <h2>Undefined e Null</h2>
+        <p>
+          O tipo
+          <strong>Undefined</strong> é atribuído a variáveis que foram
+          declaradas mas não inicializadas. Já o <strong>Null</strong> é usado
+          quando queremos intencionalmente indicar que a variável não possui
+          valor.
+        </p>
+
+        <h3>Exemplos de Undefined e Null</h3>
+
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+var indefinido;
+console.log(indefinido); // undefined
+
+var nulo = null;
+console.log(nulo); // null
+          </code></pre>
+        </div>
+
+        <p>
+          Lembre-se que
+          <code class="destaque">undefined</code> e
+          <code class="destaque">null</code> são diferentes. O primeiro é
+          atribuído pelo JavaScript quando não há valor, enquanto o segundo é
+          atribuído por nós para indicar ausência de valor.
+        </p>
+
+        <!-- Symbol -->
+        <h2>Trabalhando com Symbol</h2>
+        <p>
+          O
+          <strong>Symbol</strong> é um tipo de dado único e imutável,
+          introduzido no ES6. É muito utilizado para criar propriedades privadas
+          em objetos, evitando conflitos de nomes.
+        </p>
+
+        <h3>Exemplo de Symbol</h3>
+
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+var simbolo1 = Symbol('descricao');
+var simbolo2 = Symbol('descricao');
+console.log(simbolo1 === simbolo2); // false
+          </code></pre>
+        </div>
+
+        <p>
+          Mesmo que dois símbolos tenham a mesma descrição, eles são sempre
+          únicos.
+        </p>
+
+        <!-- BigInt -->
+        <h2>Trabalhando com BigInt</h2>
+        <p>
+          O
+          <strong>BigInt</strong> foi introduzido no ES2020 e permite
+          representar números inteiros de precisão arbitrária, ou seja, números
+          muito grandes que ultrapassam o limite do tipo
+          <code class="destaque">Number</code>.
+        </p>
+
+        <h3>Exemplo de BigInt</h3>
+
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+var numeroGrande = 123456789012345678901234567890n;
+console.log(numeroGrande); // 123456789012345678901234567890n
+          </code></pre>
+        </div>
+
+        <p>
+          Note o
+          <code class="destaque">n</code> no final do número, indicando que é um
+          BigInt.
+        </p>
+
+        <!-- Object -->
+        <h2>Trabalhando com Objetos</h2>
+        <p>
+          Objetos são estruturas que permitem armazenar dados na forma de
+          propriedades e métodos. São fundamentais em JavaScript e permitem
+          modelar dados complexos.
+        </p>
+
+        <h3>Exemplo de Objeto</h3>
+
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+var pessoa = {
+  nome: 'André',
+  idade: 28,
+  possuiFaculdade: true,
+  cumprimentar: function() {
+    console.log('Olá, ' + this.nome);
+  }
+};
+
+pessoa.cumprimentar(); // 'Olá, André'
+          </code></pre>
+        </div>
+
+        <p>
+          No exemplo acima, criamos um objeto
+          <code class="destaque">pessoa</code> com propriedades e um método para
+          cumprimentar.
+        </p>
+
+        <!-- Exercícios -->
+        <h2>Exercícios</h2>
+        <p>
+          Vamos praticar o que aprendemos até agora. Lembre-se: strings devem
+          estar entre aspas e números não precisam de aspas.
+        </p>
+
+        <ol>
+          <li>Declare uma variável contendo uma string.</li>
+          <li>Declare uma variável contendo um número dentro de uma string.</li>
+          <li>Declare uma variável com a sua idade.</li>
+          <li>
+            Declare duas variáveis, uma com seu nome e outra com seu sobrenome,
+            e some as mesmas.
+          </li>
+          <li>
+            Coloque a seguinte frase em uma variável:
+            <code class="destaque">It's time</code>.
+          </li>
+          <li>Verifique o tipo da variável que contém o seu nome.</li>
+          <li>
+            Criar uma variável do tipo BigInt e exibir seu valor no console.
+          </li>
+          <li>
+            Criar um objeto que represente um livro, com propriedades como
+            título, autor e ano de publicação.
+          </li>
+        </ol>
+
+        <p>
+          Bom trabalho! Continuaremos explorando mais sobre JavaScript nas
+          próximas aulas.
+        </p>
+      </div>
+    </main>
+    <footer>
+      <p>&copy; 2024 Matheus Rocha</p>
+    </footer>
+    <!-- Script personalizado para o bloco de código -->
+    <script src="../../util/codeBlock.js"></script>
+  </body>
+</html>
