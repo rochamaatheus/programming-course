@@ -17,6 +17,11 @@
         "title": "Aula 3: Tipos de Dados",
         "description": "Nesta aula, você irá explorar os diferentes tipos de dados no JavaScript e aprender a manipular strings de forma eficiente.",
         "link": "modulos/modulo1/aula3.html"
+      },
+      {
+        "title": "Aula 4: Números e Operadores",
+        "description": "Nesta aula, você irá aprender sobre números e operadores em JavaScript, explorando como realizar operações matemáticas e manipular dados numéricos.",
+        "link": "modulos/modulo1/aula4.html"
       }
     ]
   },
