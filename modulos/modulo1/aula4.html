@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Estilos principais -->
+    <link rel="stylesheet" href="../../util/comumAula.css" />
+    <!-- Estilos para o Prism.js -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css"
+      rel="stylesheet"
+    />
+    <!-- Script do Prism.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+    <title>Aula 4: Números e Operadores em JavaScript</title>
+  </head>
+  <body>
+    <header>
+      <h1>Desvendando Números e Operadores em JavaScript</h1>
+    </header>
+    <main>
+      <div class="article-content">
+        <a href="../../index.html" class="button"
+          >Voltar para a Página Principal</a
+        >
+
+        <!-- Introdução -->
+        <h2>Introdução aos Números e Operadores</h2>
+        <p>
+          Nesta aula, vamos explorar em detalhes como trabalhar com
+          <span
+            class="term"
+            text="Em JavaScript, números representam valores numéricos, sejam inteiros ou decimais."
+          >
+            números</span
+          >
+          e
+          <span
+            class="term"
+            text="Operadores são símbolos que instruem o JavaScript a realizar operações matemáticas ou lógicas."
+          >
+            operadores</span
+          >
+          em
+          <span
+            class="term"
+            text="JavaScript é uma linguagem de programação usada para adicionar interatividade às páginas web."
+          >
+            JavaScript</span
+          >
+          . Compreender esses conceitos é fundamental para realizar cálculos,
+          manipular dados e construir programas mais complexos.
+        </p>
+
+        <!-- Números -->
+        <h2>Números em JavaScript</h2>
+        <p>
+          Em JavaScript, o tipo
+          <strong>Number</strong> é usado para representar tanto números
+          inteiros quanto de ponto flutuante (decimais). Vamos ver alguns
+          exemplos:
+        </p>
+
+        <h3>Exemplos de Números</h3>
+
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+var idade = 28;
+var gols = 1000;
+var pi = 3.14; // Ponto para decimal
+var exp = 2e10; // 20000000000
+          </code></pre>
+        </div>
+
+        <p>Observações:</p>
+        <ul>
+          <li>
+            JavaScript utiliza o ponto (
+            <code class="destaque">.</code>) como separador decimal, não a
+            vírgula.
+          </li>
+          <li>
+            Números podem ser representados em notação científica, como em
+            <code class="destaque">2e10</code>, que equivale a
+            <code class="destaque">2 x 10<sup>10</sup></code
+            >.
+          </li>
+          <li>
+            A precisão dos números em JavaScript é de até 15 dígitos
+            significativos.
+          </li>
+        </ul>
+
+        <!-- Operadores Aritméticos -->
+        <h2>Operadores Aritméticos</h2>
+        <p>
+          Operadores aritméticos são usados para realizar operações matemáticas
+          básicas. Aqui estão os principais operadores:
+        </p>
+
+        <table>
+          <tr>
+            <th>Operador</th>
+            <th>Descrição</th>
+            <th>Exemplo</th>
+            <th>Resultado</th>
+          </tr>
+          <tr>
+            <td><code class="destaque">+</code></td>
+            <td>Adição</td>
+            <td><code>10 + 5</code></td>
+            <td><code>15</code></td>
+          </tr>
+          <tr>
+            <td><code class="destaque">-</code></td>
+            <td>Subtração</td>
+            <td><code>10 - 5</code></td>
+            <td><code>5</code></td>
+          </tr>
+          <tr>
+            <td><code class="destaque">*</code></td>
+            <td>Multiplicação</td>
+            <td><code>10 * 5</code></td>
+            <td><code>50</code></td>
+          </tr>
+          <tr>
+            <td><code class="destaque">/</code></td>
+            <td>Divisão</td>
+            <td><code>10 / 5</code></td>
+            <td><code>2</code></td>
+          </tr>
+          <tr>
+            <td><code class="destaque">%</code></td>
+            <td>Módulo (Resto da divisão)</td>
+            <td><code>10 % 3</code></td>
+            <td><code>1</code></td>
+          </tr>
+          <tr>
+            <td><code class="destaque">**</code></td>
+            <td>Exponenciação</td>
+            <td><code>2 ** 3</code></td>
+            <td><code>8</code></td>
+          </tr>
+        </table>
+
+        <h3>Exemplos Práticos</h3>
+
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+var soma = 100 + 50; // 150
+var subtracao = 100 - 50; // 50
+var multiplicacao = 100 * 2; // 200
+var divisao = 100 / 2; // 50
+var expoente = 2 ** 4; // 16
+var modulo = 14 % 5; // 4
+          </code></pre>
+        </div>
+
+        <p>Importante:</p>
+        <ul>
+          <li>
+            O operador de adição (
+            <code class="destaque">+</code>) também é usado para concatenar
+            strings. Portanto, se um dos operandos for uma string, o resultado
+            será uma string concatenada.
+          </li>
+        </ul>
+
+        <!-- Operadores com Strings -->
+        <h2>Operadores Aritméticos com Strings</h2>
+        <p>
+          Quando utilizamos operadores aritméticos com strings, o JavaScript
+          tenta converter as strings em números quando possível. Vamos ver
+          alguns exemplos:
+        </p>
+
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+var soma = '100' + 50; // '10050' (concatenação)
+var subtracao = '100' - 50; // 50 (conversão para número)
+var multiplicacao = '100' * '2'; // 200 (conversão para número)
+var divisao = 'Comprei 10' / 2; // NaN (Not a Number)
+          </code></pre>
+        </div>
+
+        <p>Observações:</p>
+        <ul>
+          <li>A adição com strings realiza concatenação.</li>
+          <li>
+            Operadores como subtração, multiplicação e divisão tentam converter
+            as strings em números.
+          </li>
+          <li>
+            Se a conversão falhar, o resultado será
+            <code class="destaque">NaN</code> (Not a Number).
+          </li>
+        </ul>
+
+        <!-- NaN (Not a Number) -->
+        <h2>Entendendo o NaN (Not a Number)</h2>
+        <p>
+          O
+          <code class="destaque">NaN</code> é uma propriedade que representa um
+          valor "Não é um Número". Isso ocorre quando uma operação matemática
+          falha (por exemplo, quando tentamos dividir uma string não numérica
+          por um número).
+        </p>
+
+        <h3>Exemplo com NaN</h3>
+
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+var numero = 80;
+var unidade = 'kg';
+var peso = numero + unidade; // '80kg' (string)
+var pesoPorDois = peso / 2; // NaN
+          </code></pre>
+        </div>
+
+        <p>
+          Para verificar se um valor é
+          <code class="destaque">NaN</code>, podemos usar a função
+          <code class="destaque">isNaN()</code>:
+        </p>
+
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+console.log(isNaN(pesoPorDois)); // true
+          </code></pre>
+        </div>
+
+        <!-- Ordem das Operações -->
+        <h2>A Importância da Ordem das Operações</h2>
+        <p>
+          Assim como na matemática, a ordem em que as operações são realizadas
+          em JavaScript é importante. A sequência padrão é:
+        </p>
+        <ol>
+          <li>Parênteses</li>
+          <li>Exponenciação</li>
+          <li>Multiplicação e Divisão (da esquerda para a direita)</li>
+          <li>Soma e Subtração (da esquerda para a direita)</li>
+        </ol>
+
+        <h3>Exemplos de Ordem de Operações</h3>
+
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+var total1 = 20 + 5 * 2; // 30
+var total2 = (20 + 5) * 2; // 50
+var total3 = 20 / 2 * 5; // 50
+var total4 = 10 + 10 * 2 + 20 / 2; // 40
+          </code></pre>
+        </div>
+
+        <p>
+          Para alterar a ordem padrão, use parênteses para definir quais
+          operações devem ser realizadas primeiro.
+        </p>
+
+        <!-- Operadores Unários -->
+        <h2>Operadores Aritméticos Unários</h2>
+        <p>
+          Operadores unários são aplicados a apenas um operando. Os mais comuns
+          são o operador de incremento (
+          <code class="destaque">++</code>) e decremento (
+          <code class="destaque">--</code>).
+        </p>
+
+        <h3>Operador de Incremento</h3>
+
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+var incremento = 5;
+console.log(incremento++); // 5 (retorna e depois incrementa)
+console.log(incremento); // 6
+
+var incremento2 = 5;
+console.log(++incremento2); // 6 (incrementa e depois retorna)
+console.log(incremento2); // 6
+          </code></pre>
+        </div>
+
+        <p>Observações:</p>
+        <ul>
+          <li>
+            <code class="destaque">incremento++</code> retorna o valor atual e
+            depois incrementa.
+          </li>
+          <li>
+            <code class="destaque">++incremento</code> incrementa primeiro e
+            depois retorna o valor.
+          </li>
+          <li>
+            O mesmo conceito se aplica ao operador de decremento (
+            <code class="destaque">--</code>).
+          </li>
+        </ul>
+
+        <!-- Operadores Unários com + e - -->
+        <h2>Operadores Unários com + e -</h2>
+        <p>
+          Os operadores unários
+          <code class="destaque">+</code> e
+          <code class="destaque">-</code> também podem ser usados para converter
+          tipos de dados.
+        </p>
+
+        <h3>Convertendo Strings em Números</h3>
+
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+var idade = '28';
+console.log(+idade); // 28 (número)
+console.log(-idade); // -28 (número)
+console.log(+idade + 5); // 33
+
+var possuiFaculdade = true;
+console.log(+possuiFaculdade); // 1
+          </code></pre>
+        </div>
+
+        <p>Observações:</p>
+        <ul>
+          <li>
+            O operador
+            <code class="destaque">+</code> tenta converter o operando em
+            número.
+          </li>
+          <li>
+            Valores booleanos são convertidos em
+            <code class="destaque">1</code> (
+            <code class="destaque">true</code>) ou
+            <code class="destaque">0</code> (
+            <code class="destaque">false</code>).
+          </li>
+          <li>
+            Se a conversão não for possível, o resultado será
+            <code class="destaque">NaN</code>.
+          </li>
+        </ul>
+
+        <!-- Guia Completo de Operadores -->
+        <h2>Guia Completo de Operadores</h2>
+        <p>
+          Para um entendimento mais profundo sobre operadores em JavaScript,
+          recomendo a leitura do
+          <a
+            href="https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Expressions_and_Operators"
+            target="_blank"
+            rel="noopener"
+            >Guia de Expressões e Operadores da MDN</a
+          >.
+        </p>
+
+        <!-- Exercícios -->
+        <h2>Exercícios</h2>
+        <p>
+          Agora é sua vez! Tente resolver os exercícios abaixo para praticar o
+          que aprendemos.
+        </p>
+
+        <ol>
+          <li>
+            Qual o resultado da seguinte expressão?
+            <div class="code-block">
+              <button class="copy-button">Copiar</button>
+              <pre><code class="language-javascript">
+var total = 10 + 5 * 2 / 2 + 20;
+console.log(total); // ?
+              </code></pre>
+            </div>
+          </li>
+          <li>
+            Crie duas expressões que retornem
+            <code class="destaque">NaN</code>.
+          </li>
+          <li>
+            Some a string
+            <code class="destaque">'200'</code> com o número
+            <code class="destaque">50</code> e retorne
+            <code class="destaque">250</code>.
+          </li>
+          <li>
+            Incremente o número
+            <code class="destaque">5</code> e retorne o seu valor incrementado.
+          </li>
+          <li>
+            Como dividir o peso por 2?
+            <div class="code-block">
+              <button class="copy-button">Copiar</button>
+              <pre><code class="language-javascript">
+var numero = '80';
+var unidade = 'kg';
+var peso = numero + unidade; // '80kg'
+var pesoPorDois = ?; // O que fazer aqui?
+              </code></pre>
+            </div>
+          </li>
+        </ol>
+
+        <p>
+          Na próxima aula, continuaremos aprofundando nossos conhecimentos em
+          JavaScript, explorando novas funcionalidades e técnicas de
+          programação.
+        </p>
+      </div>
+    </main>
+    <footer>
+      <p>&copy; 2024 Matheus Rocha</p>
+    </footer>
+    <!-- Script personalizado para o bloco de código -->
+    <script src="../../util/codeBlock.js"></script>
+  </body>
+</html>
