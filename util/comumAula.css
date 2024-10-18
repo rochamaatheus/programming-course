@@ -8,6 +8,7 @@
 html,
 body {
   height: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -143,7 +144,8 @@ a:hover:not(.button) {
 
 pre {
   tab-size: 4;
-  white-space: pre-wrap;
+  white-space: pre;
+  overflow-x: auto;
 }
 
 .code-block code {
@@ -254,5 +256,18 @@ pre {
 @media (max-width: 768px) {
   .article-content {
     padding: 0 10px;
+  }
+}
+@media (max-width: 600px) {
+  .term::after {
+    bottom: auto;
+    top: 125%; /* Posiciona a tooltip abaixo do texto */
+    white-space: normal;
+  }
+
+  .term::before {
+    bottom: auto;
+    top: 115%; /* Ajusta o triângulo para acompanhar a tooltip */
+    border-color: #4b1670 transparent transparent transparent;
   }
 }
