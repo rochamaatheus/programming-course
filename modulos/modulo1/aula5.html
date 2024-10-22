@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Estilos principais -->
+    <link rel="stylesheet" href="../../util/comumAula.css" />
+    <!-- Estilos para o Prism.js -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css"
+      rel="stylesheet"
+    />
+    <!-- Script do Prism.js -->
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"
+    ></script>
+    <title>Aula 4: Condicionais e Booleans em JavaScript</title>
+  </head>
+  <body>
+    <header><h1>Desvendando Condicionais e Booleans em JavaScript</h1></header>
+    <main>
+      <div class="article-content">
+        <a href="../../index.html" class="button"
+          >Voltar para a Página Principal</a
+        >
+
+        <!-- Introdução -->
+        <h2>Introdução aos Booleans e Condicionais</h2>
+        <p>
+          Nesta aula, vamos explorar os
+          <span
+            class="term"
+            text="Booleans são tipos de dados que podem assumir apenas dois valores: true ou false."
+            >Booleans</span
+          >
+          e como utilizá-los em estruturas condicionais como
+          <code class="destaque">if</code>, <code class="destaque">else</code> e
+          <code class="destaque">switch</code> em
+          <span
+            class="term"
+            text="JavaScript é uma linguagem de programação usada para adicionar interatividade às páginas web."
+            >JavaScript</span
+          >. Entender como funcionam as condições é essencial para controlar o
+          fluxo do seu programa.
+        </p>
+
+        <!-- Boolean -->
+        <h2>O Tipo de Dado Boolean</h2>
+        <p>
+          Em JavaScript, o tipo
+          <strong>Boolean</strong> possui apenas dois valores:
+          <code class="destaque">true</code> (verdadeiro) ou
+          <code class="destaque">false</code> (falso). Eles são fundamentais
+          para tomar decisões no código.
+        </p>
+
+        <h3>Exemplos de Booleans</h3>
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+var possuiGraduacao = true;
+var possuiDoutorado = false;
+          </code></pre>
+        </div>
+
+        <!-- Condicionais If e Else -->
+        <h2>Condicionais: If e Else</h2>
+        <p>
+          As condicionais permitem executar blocos de código com base em certas
+          condições. A estrutura mais básica é o
+          <code class="destaque">if</code>, que executa o código dentro de suas
+          chaves se a condição for verdadeira. O
+          <code class="destaque">else</code> é usado para executar código caso a
+          condição do <code class="destaque">if</code> seja falsa.
+        </p>
+
+        <h3>Exemplo de If e Else</h3>
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+var possuiGraduacao = true;
+
+if (possuiGraduacao) {
+  console.log('Possui graduação');
+} else {
+  console.log('Não possui graduação');
+}
+// Retorna 'Possui graduação' e não executa o else
+          </code></pre>
+        </div>
+
+        <p>
+          O valor dentro dos parênteses sempre será avaliado como
+          <code class="destaque">true</code> ou
+          <code class="destaque">false</code>.
+        </p>
+
+        <!-- Condicionais Else If -->
+        <h2>Condicionais: Else If</h2>
+        <p>
+          O <code class="destaque">else if</code> permite testar múltiplas
+          condições em sequência. Se o <code class="destaque">if</code> inicial
+          for falso, o programa testará a condição do
+          <code class="destaque">else if</code>.
+        </p>
+
+        <h3>Exemplo de Else If</h3>
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+var possuiGraduacao = true;
+var possuiDoutorado = false;
+
+if (possuiDoutorado) {
+  console.log('Possui graduação e doutorado');
+} else if (possuiGraduacao) {
+  console.log('Possui graduação, mas não possui doutorado');
+} else {
+  console.log('Não possui graduação');
+}
+// Retorna 'Possui graduação, mas não possui doutorado'
+          </code></pre>
+        </div>
+
+        <!-- Switch -->
+        <h2>Utilizando o Switch</h2>
+        <p>
+          O <code class="destaque">switch</code> é uma alternativa ao
+          <code class="destaque">if else</code> quando precisamos verificar se
+          uma variável é igual a diferentes valores. Utilizamos o
+          <code class="destaque">case</code> para cada valor possível e o
+          <code class="destaque">break</code> para interromper a execução após
+          uma correspondência.
+        </p>
+
+        <h3>Exemplo de Switch</h3>
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+var corFavorita = 'Azul';
+
+switch (corFavorita) {
+  case 'Azul':
+    console.log('Olhe para o céu.');
+    break;
+  case 'Vermelho':
+    console.log('Olhe para rosas.');
+    break;
+  case 'Amarelo':
+    console.log('Olhe para o sol.');
+    break;
+  default:
+    console.log('Feche os olhos');
+}
+// Retorna 'Olhe para o céu.'
+          </code></pre>
+        </div>
+
+        <!-- Truthy e Falsy -->
+        <h2>Valores Truthy e Falsy</h2>
+        <p>
+          Em JavaScript, alguns valores são considerados
+          <span
+            class="term"
+            text="Falsy são valores que, quando convertidos para booleano, resultam em false."
+            >Falsy</span
+          >
+          (avaliados como <code class="destaque">false</code>) e outros são
+          considerados
+          <span
+            class="term"
+            text="Truthy são valores que, quando convertidos para booleano, resultam em true."
+            >Truthy</span
+          >
+          (avaliados como <code class="destaque">true</code>). Conhecer esses
+          valores é importante para evitar comportamentos inesperados.
+        </p>
+
+        <h3>Valores Falsy</h3>
+        <ul>
+          <li><code class="destaque">false</code></li>
+          <li>
+            <code class="destaque">0</code> ou <code class="destaque">-0</code>
+          </li>
+          <li><code class="destaque">NaN</code></li>
+          <li><code class="destaque">null</code></li>
+          <li><code class="destaque">undefined</code></li>
+          <li>
+            <code class="destaque">''</code>, <code class="destaque">""</code>,
+            <code class="destaque">``</code>
+          </li>
+        </ul>
+
+        <h3>Valores Truthy</h3>
+        <ul>
+          <li><code class="destaque">true</code></li>
+          <li>
+            Números diferentes de zero (<code class="destaque">1</code>,
+            <code class="destaque">-5</code>)
+          </li>
+          <li>
+            Strings não vazias (<code class="destaque">' '</code>,
+            <code class="destaque">'Andre'</code>)
+          </li>
+          <li>
+            Objetos e arrays (<code class="destaque">{}</code>,
+            <code class="destaque">[]</code>)
+          </li>
+        </ul>
+
+        <!-- Operador de Negação -->
+        <h2>Operador Lógico de Negação <code class="destaque">!</code></h2>
+        <p>
+          O operador de negação <code class="destaque">!</code> inverte o valor
+          booleano de uma expressão. Se a expressão é
+          <code class="destaque">true</code>, ela se torna
+          <code class="destaque">false</code> e vice-versa.
+        </p>
+
+        <h3>Exemplos com Operador de Negação</h3>
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+// Exemplos
+if (!true) // false
+if (!1) // false
+if (!'') // true
+if (!undefined) // true
+if (!!' ') // true
+if (!!'') // false
+          </code></pre>
+        </div>
+
+        <p>
+          Dica: você pode utilizar <code class="destaque">!!</code> para
+          verificar se um valor é <em>truthy</em> ou <em>falsy</em>.
+        </p>
+
+        <!-- Operadores de Comparação -->
+        <h2>Operadores de Comparação</h2>
+        <p>
+          Os operadores de comparação são usados para comparar valores e
+          retornam um valor booleano (<code class="destaque">true</code> ou
+          <code class="destaque">false</code>).
+        </p>
+
+        <h3>Principais Operadores</h3>
+        <ul>
+          <li><code class="destaque">></code>: Maior que</li>
+          <li><code class="destaque"><</code>: Menor que</li>
+          <li><code class="destaque">>=</code>: Maior ou igual a</li>
+          <li><code class="destaque"><=</code>: Menor ou igual a</li>
+          <li><code class="destaque">==</code>: Igual a (não estrito)</li>
+          <li><code class="destaque">===</code>: Igual a (estrito)</li>
+          <li><code class="destaque">!=</code>: Diferente de (não estrito)</li>
+          <li><code class="destaque">!==</code>: Diferente de (estrito)</li>
+        </ul>
+
+        <h3>Exemplos de Comparação</h3>
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+10 > 5; // true
+5 > 10; // false
+20 < 10; // false
+10 <= 10; // true
+10 >= 11; // false
+
+10 == '10'; // true (não estrito)
+10 === '10'; // false (estrito)
+10 != '10'; // false (não estrito)
+10 !== '10'; // true (estrito)
+          </code></pre>
+        </div>
+
+        <!-- Operadores Lógicos -->
+        <h2>Operadores Lógicos</h2>
+        <p>
+          Os operadores lógicos permitem combinar expressões e retornam um valor
+          booleano como resultado.
+        </p>
+
+        <h3>Operador E (<code class="destaque">&&</code>)</h3>
+        <p>
+          O operador <code class="destaque">&&</code> (E lógico) retorna
+          <code class="destaque">true</code> se ambas as expressões forem
+          verdadeiras. Caso contrário, retorna
+          <code class="destaque">false</code>.
+        </p>
+
+        <h4>Exemplos com <code class="destaque">&&</code></h4>
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+true && true; // true
+true && false; // false
+false && true; // false
+'Gato' && 'Cão'; // 'Cão'
+(5 - 5) && (5 + 5); // 0
+'Gato' && false; // false
+(5 >= 5) && (3 < 6); // true
+          </code></pre>
+        </div>
+
+        <p>
+          Se ambos os valores forem <code class="destaque">true</code>, ele
+          retorna o último valor verificado. Se algum valor for
+          <code class="destaque">false</code>, retorna o primeiro valor
+          <code class="destaque">false</code> encontrado.
+        </p>
+
+        <h3>Operador OU (<code class="destaque">||</code>)</h3>
+        <p>
+          O operador <code class="destaque">||</code> (OU lógico) retorna
+          <code class="destaque">true</code> se pelo menos uma das expressões
+          for verdadeira.
+        </p>
+
+        <h4>Exemplos com <code class="destaque">||</code></h4>
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+true || true; // true
+true || false; // true
+false || true; // true
+'Gato' || 'Cão'; // 'Gato'
+(5 - 5) || (5 + 5); // 10
+'Gato' || false; // 'Gato'
+(5 >= 5) || (3 < 6); // true
+          </code></pre>
+        </div>
+
+        <p>
+          Retorna o primeiro valor <code class="destaque">true</code> que
+          encontrar. Se nenhum valor for <code class="destaque">true</code>,
+          retorna o último valor avaliado.
+        </p>
+
+        <!-- Exercícios -->
+        <h2>Exercícios</h2>
+        <p>
+          Vamos praticar o que aprendemos até agora. Tente resolver os
+          exercícios abaixo e verifique suas respostas.
+        </p>
+
+        <ol>
+          <li>
+            Verifique se a sua idade é maior do que a de algum parente.
+            Dependendo do resultado, coloque no console 'É maior', 'É igual' ou
+            'É menor'.
+          </li>
+          <li>
+            Qual valor é retornado na seguinte expressão?
+            <div class="code-block">
+              <button class="copy-button">Copiar</button>
+              <pre><code class="language-javascript">
+var expressao = (5 - 2) && (5 - ' ') && (5 - 2);
+              </code></pre>
+            </div>
+          </li>
+          <li>
+            Verifique se as seguintes variáveis são <em>Truthy</em> ou
+            <em>Falsy</em>:
+            <div class="code-block">
+              <button class="copy-button">Copiar</button>
+              <pre><code class="language-javascript">
+var nome = 'Andre';
+var idade = 28;
+var possuiDoutorado = false;
+var empregoFuturo;
+var dinheiroNaConta = 0;
+              </code></pre>
+            </div>
+          </li>
+          <li>
+            Compare o total de habitantes do Brasil com a China (valor em
+            milhões).
+            <div class="code-block">
+              <button class="copy-button">Copiar</button>
+              <pre><code class="language-javascript">
+var brasil = 207;
+var china = 1340;
+              </code></pre>
+            </div>
+          </li>
+          <li>
+            O que irá aparecer no console?
+            <div class="code-block">
+              <button class="copy-button">Copiar</button>
+              <pre><code class="language-javascript">
+if (('Gato' === 'gato') && (5 > 2)) {
+  console.log('Verdadeiro');
+} else {
+  console.log('Falso');
+}
+              </code></pre>
+            </div>
+          </li>
+          <li>
+            E neste caso, o que irá aparecer no console?
+            <div class="code-block">
+              <button class="copy-button">Copiar</button>
+              <pre><code class="language-javascript">
+if (('Gato' === 'gato') || (5 > 2)) {
+  console.log('Gato' && 'Cão');
+} else {
+  console.log('Falso');
+}
+              </code></pre>
+            </div>
+          </li>
+        </ol>
+
+        <!-- Conclusão -->
+        <h2>Conclusão</h2>
+        <p>
+          Nesta aula, exploramos como utilizar Booleans e estruturas
+          condicionais para controlar o fluxo de nossos programas em JavaScript.
+          Dominar esses conceitos é fundamental para desenvolver aplicações mais
+          interativas e dinâmicas.
+        </p>
+
+        <p>
+          Na próxima aula, iremos aprofundar nossos conhecimentos sobre funções
+          e escopos em JavaScript. Até lá!
+        </p>
+      </div>
+    </main>
+    <footer>
+      <p>&copy; 2024 Matheus Rocha</p>
+    </footer>
+    <!-- Script personalizado para o bloco de código -->
+    <script src="../../util/codeBlock.js"></script>
+  </body>
+</html>
