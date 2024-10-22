@@ -22,6 +22,11 @@
         "title": "Aula 4: Números e Operadores",
         "description": "Nesta aula, você irá aprender sobre números e operadores em JavaScript, explorando como realizar operações matemáticas e manipular dados numéricos.",
         "link": "modulos/modulo1/aula4.html"
+      },
+      {
+        "title": "Aula 5: Condicionais e Booleans",
+        "description": "Nesta aula, você irá aprender sobre estruturas condicionais e booleans, incluindo if, else, switch, operadores lógicos e valores truthy e falsy.",
+        "link": "modulos/modulo1/aula5.html"
       }
     ]
   },
