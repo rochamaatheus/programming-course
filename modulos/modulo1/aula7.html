@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Estilos principais -->
+    <link rel="stylesheet" href="../../util/comumAula.css" />
+    <!-- Estilos para o Prism.js -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css"
+      rel="stylesheet"
+    />
+    <!-- Script do Prism.js -->
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"
+    ></script>
+    <title>Aula 7: Objetos em JavaScript</title>
+  </head>
+  <body>
+    <header>
+      <h1>Explorando Objetos e Protótipos em JavaScript</h1>
+    </header>
+    <main>
+      <div class="article-content">
+        <a href="../../index.html" class="button"
+          >Voltar para a Página Principal</a
+        >
+
+        <!-- Introdução -->
+        <h2>Introdução aos Objetos</h2>
+        <p>
+          Em JavaScript, um
+          <span
+            class="term"
+            text="Objetos são coleções de propriedades e métodos."
+            >objeto</span
+          >
+          é uma coleção de dados e funcionalidades relacionadas, representadas
+          por propriedades e métodos. Objetos permitem organizar e estruturar o
+          código de forma eficiente.
+        </p>
+
+        <!-- Criando Objetos -->
+        <h2>Criando e Acessando Objetos</h2>
+        <p>
+          Podemos criar um objeto utilizando chaves
+          <code class="destaque">{}</code> e definir pares de chave e valor para
+          representar suas propriedades.
+        </p>
+
+        <h3>Exemplo de Objeto Simples</h3>
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+var pessoa = {
+  nome: 'Matheus',
+  idade: 18,
+  profissao: 'programador',
+  possuiFaculdade: false,
+};
+
+console.log(pessoa.nome); // 'Matheus'
+console.log(pessoa.possuiFaculdade); // false
+          </code></pre>
+        </div>
+
+        <p>
+          As propriedades e métodos de um objeto são acessados utilizando a
+          notação de ponto <code class="destaque">.</code>.
+        </p>
+
+        <!-- Métodos -->
+        <h2>Métodos em Objetos</h2>
+        <p>
+          Um método é uma função associada a uma propriedade de um objeto. Isso
+          permite que o objeto execute ações com seus próprios dados.
+        </p>
+
+        <h3>Exemplo com Métodos</h3>
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+var quadrado = {
+  lados: 4,
+  area: function(lado) {
+    return lado * lado;
+  },
+  perimetro: function(lado) {
+    return this.lados * lado;
+  },
+};
+
+console.log(quadrado.lados); // 4
+console.log(quadrado.area(5)); // 25
+console.log(quadrado.perimetro(5)); // 20
+          </code></pre>
+        </div>
+
+        <p>
+          Note o uso da palavra-chave <code class="destaque">this</code> para
+          referenciar propriedades do próprio objeto dentro dos métodos.
+        </p>
+
+        <!-- Sintaxe Abreviada de Métodos -->
+        <h2>Sintaxe Abreviada de Métodos</h2>
+        <p>
+          A partir do ES6, podemos definir métodos de forma abreviada, omitindo
+          a palavra-chave <code class="destaque">function</code>.
+        </p>
+
+        <h3>Exemplo com Sintaxe Abreviada</h3>
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+var quadrado = {
+  lados: 4,
+  area(lado) {
+    return lado * lado;
+  },
+  perimetro(lado) {
+    return this.lados * lado;
+  },
+};
+          </code></pre>
+        </div>
+
+        <!-- Organizando o Código com Objetos -->
+        <h2>Organizando o Código com Objetos</h2>
+        <p>
+          Objetos são excelentes para organizar o código em partes reutilizáveis
+          e lógicas. Muitos objetos nativos do JavaScript, como
+          <code class="destaque">Math</code> e
+          <code class="destaque">console</code>, seguem esse padrão.
+        </p>
+
+        <h3>Exemplo com Objeto Math</h3>
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+console.log(Math.PI); // 3.141592653589793
+console.log(Math.random()); // Número aleatório entre 0 e 1
+
+var pi = Math.PI;
+console.log(pi); // 3.141592653589793
+          </code></pre>
+        </div>
+
+        <!-- Criando um Objeto -->
+        <h2>Criando um Objeto</h2>
+        <p>
+          Um objeto é criado utilizando as chaves
+          <code class="destaque">{}</code>. Podemos atribuir propriedades e
+          métodos conforme necessário.
+        </p>
+
+        <h3>Exemplo de Criação de Objeto</h3>
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+var carro = {};
+var pessoa = {};
+
+console.log(typeof carro); // 'object'
+          </code></pre>
+        </div>
+
+        <!-- Acessando e Modificando Propriedades -->
+        <h2>Acessando e Modificando Propriedades</h2>
+        <p>
+          Utilizamos a notação de ponto para acessar e modificar as propriedades
+          de um objeto.
+        </p>
+
+        <h3>Acessando Propriedades</h3>
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+var menu = {
+  width: 800,
+  height: 50,
+  backgroundColor: '#84E',
+};
+
+var bg = menu.backgroundColor;
+console.log(bg); // '#84E'
+          </code></pre>
+        </div>
+
+        <h3>Modificando Propriedades</h3>
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+menu.backgroundColor = '#000';
+console.log(menu.backgroundColor); // '#000'
+          </code></pre>
+        </div>
+
+        <h3>Adicionando Novas Propriedades e Métodos</h3>
+        <p>
+          Podemos adicionar novas propriedades e métodos a um objeto a qualquer
+          momento.
+        </p>
+
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+menu.height = 50;
+menu.position = 'fixed';
+
+console.log(menu);
+          </code></pre>
+        </div>
+
+        <!-- A Palavra-chave this -->
+        <h2>A Palavra-chave <code class="destaque">this</code></h2>
+        <p>
+          A palavra-chave <code class="destaque">this</code> faz referência ao
+          objeto atual, permitindo acessar suas propriedades e métodos
+          internamente.
+        </p>
+
+        <h3>Exemplo com this</h3>
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+var height = 120;
+var menu = {
+  width: 800,
+  height: 50,
+  metadeHeight() {
+    return this.height / 2;
+  },
+};
+
+console.log(menu.metadeHeight()); // 25
+          </code></pre>
+        </div>
+
+        <p>
+          Sem o uso de <code class="destaque">this</code>, o JavaScript buscaria
+          a variável <code class="destaque">height</code> no escopo global, o
+          que poderia causar conflitos ou resultados inesperados.
+        </p>
+
+        <!-- Protótipo e Herança -->
+        <h2>Protótipo e Herança</h2>
+        <p>
+          Em JavaScript, objetos herdam propriedades e métodos de um protótipo,
+          que é o objeto usado como base para sua criação. Isso permite
+          reutilizar código e adicionar funcionalidades adicionais.
+        </p>
+
+        <h3>Exemplo de Herança</h3>
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+var menu = {
+  width: 800,
+};
+
+console.log(menu.hasOwnProperty('width')); // true
+console.log(menu.hasOwnProperty('height')); // false
+          </code></pre>
+        </div>
+
+        <p>
+          O método <code class="destaque">hasOwnProperty</code> é herdado do
+          protótipo <code class="destaque">Object</code>. Isso significa que o
+          objeto <code class="destaque">menu</code> tem acesso a métodos que não
+          foram definidos diretamente nele, mas que estão disponíveis no seu
+          protótipo.
+        </p>
+
+        <!-- Tudo é Objeto -->
+        <h2>Tudo é Objeto</h2>
+        <p>
+          Em JavaScript, quase tudo é um objeto. Isso inclui strings, números,
+          booleanos, arrays, funções e até mesmo outros objetos. Isso ocorre
+          porque esses tipos de dados herdam propriedades e métodos de seus
+          protótipos.
+        </p>
+
+        <h3>Strings</h3>
+        <p>
+          Strings possuem métodos e propriedades que permitem manipulações
+          avançadas.
+        </p>
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+var nome = 'André';
+
+console.log(nome.length); // 5
+console.log(nome.charAt(1)); // 'n'
+console.log(nome.replace('ré', 'rei')); // 'Andrei'
+console.log(nome); // 'André'
+          </code></pre>
+        </div>
+
+        <p>
+          Uma string herda propriedades e métodos do construtor
+          <code class="destaque">String()</code>.
+        </p>
+
+        <h3>Números</h3>
+        <p>
+          Números também possuem métodos e propriedades, embora sejam tipos
+          primitivos. Isso acontece devido à coerção, onde o JavaScript envolve
+          o número em um objeto temporariamente.
+        </p>
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+var altura = 1.8;
+
+console.log(altura.toString()); // '1.8'
+console.log(altura.toFixed()); // '2'
+          </code></pre>
+        </div>
+
+        <h3>Funções</h3>
+        <p>
+          Funções são objetos de primeira classe em JavaScript, o que significa
+          que podem ter propriedades e métodos.
+        </p>
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+function areaQuadrado(lado) {
+  return lado * lado;
+}
+
+console.log(areaQuadrado.toString());
+// "function areaQuadrado(lado) {
+//   return lado * lado;
+// }"
+
+console.log(areaQuadrado.length); // 1
+          </code></pre>
+        </div>
+
+        <h3>Elementos do DOM</h3>
+        <p>
+          Elementos HTML selecionados no DOM também são objetos e possuem
+          propriedades e métodos que permitem interagir com a página.
+        </p>
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-html">
+<!-- Exemplo de elemento HTML -->
+&le;a class="btn">Clique&le;/a&gt;
+          </code></pre>
+        </div>
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+var btn = document.querySelector('.btn');
+
+btn.classList.add('azul'); // Adiciona a classe 'azul'
+console.log(btn.innerText); // 'Clique'
+btn.addEventListener('click', function() {
+  console.log('Clicou');
+});
+          </code></pre>
+        </div>
+
+        <p>
+          A maioria das interações em uma página web é realizada manipulando
+          propriedades e métodos desses objetos do DOM.
+        </p>
+
+        <!-- Objetos e Programação -->
+        <h2>Objetos Revolucionaram a Programação</h2>
+        <p>
+          A programação orientada a objetos (POO) permite que desenvolvedores
+          criem aplicações mais organizadas, reutilizáveis e fáceis de manter.
+          Em JavaScript, essa abordagem é amplamente utilizada, especialmente
+          com o uso de Web APIs que permitem a interação entre JavaScript e o
+          navegador.
+        </p>
+
+        <!-- Exercícios -->
+        <section id="exercicios">
+          <h2>Exercícios</h2>
+          <p>Pratique o que aprendeu respondendo os seguintes exercícios:</p>
+
+          <ol>
+            <li>
+              Crie um objeto com os seus dados pessoais.
+              <br />
+              Deve possuir pelo menos duas propriedades:
+              <code class="destaque">nome</code> e
+              <code class="destaque">sobrenome</code>.
+            </li>
+
+            <li>
+              Crie um método no objeto anterior que mostre o seu nome completo.
+            </li>
+
+            <li>
+              Modifique o valor da propriedade
+              <code class="destaque">preco</code> para 3000 no objeto abaixo:
+              <div class="code-block">
+                <button class="copy-button">Copiar</button>
+                <pre><code class="language-javascript">
+        var carro = {
+          preco: 1000,
+          portas: 4,
+          marca: 'Audi',
+        };
+              </code></pre>
+              </div>
+            </li>
+
+            <li>
+              Crie um objeto de um cachorro que represente um labrador preto com
+              10 anos, que late ao ver um homem.
+            </li>
+
+            <li>Nomeie 3 propriedades ou métodos de strings.</li>
+
+            <li>Nomeie 5 propriedades ou métodos de elementos do DOM.</li>
+
+            <li>
+              Busque na web um objeto (método) capaz de interagir com o
+              <em>clipboard</em> (área de transferência), que é a parte do seu
+              computador que lida com o <code class="destaque">CTRL + C</code> e
+              <code class="destaque">CTRL + V</code>.
+            </li>
+          </ol>
+        </section>
+
+        <!-- Conclusão -->
+        <h2>Conclusão</h2>
+        <p>
+          Nesta aula, aprofundamos nosso entendimento sobre objetos em
+          JavaScript, explorando como eles formam a base da linguagem.
+          Aprendemos sobre protótipos, herança, e como quase tudo em JavaScript
+          é um objeto ou se comporta como um. Compreender esses conceitos é
+          fundamental para avançar no desenvolvimento de aplicações mais
+          complexas e eficientes.
+        </p>
+
+        <p>
+          Continue explorando e praticando para solidificar seu conhecimento
+          sobre objetos e protótipos em JavaScript.
+        </p>
+      </div>
+    </main>
+    <footer>
+      <p>&copy; 2024 Matheus Rocha</p>
+    </footer>
+    <!-- Script personalizado para o bloco de código -->
+    <script src="../../util/codeBlock.js"></script>
+  </body>
+</html>
