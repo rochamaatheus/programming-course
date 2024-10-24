@@ -32,6 +32,11 @@
         "title": "Aula 6: Funções em JavaScript",
         "description": "Nesta aula, você irá aprender sobre funções em JavaScript, como criar, utilizar e retornar valores, além de conceitos como escopo, hoisting e callbacks.",
         "link": "modulos/modulo1/aula6.html"
+      },
+      {
+        "title": "Aula 7: Objetos em JavaScript",
+        "description": "Nesta aula, você irá aprender sobre objetos em JavaScript, incluindo como criar, acessar e manipular propriedades e métodos, além de conceitos como protótipos e herança.",
+        "link": "modulos/modulo1/aula7.html"
       }
     ]
   },
