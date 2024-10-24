@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Estilos principais -->
+    <link rel="stylesheet" href="../../util/comumAula.css" />
+    <!-- Estilos para o Prism.js -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css"
+      rel="stylesheet"
+    />
+    <!-- Script do Prism.js -->
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"
+    ></script>
+    <title>Aula 5: Funções em JavaScript</title>
+  </head>
+  <body>
+    <header>
+      <h1>Desvendando Funções em JavaScript</h1>
+    </header>
+    <main>
+      <div class="article-content">
+        <a href="../../index.html" class="button"
+          >Voltar para a Página Principal</a
+        >
+
+        <!-- Introdução -->
+        <h2>Introdução às Funções</h2>
+        <p>
+          As
+          <span
+            class="term"
+            text="São blocos de código que podem ser executados e reutilizados."
+            >funções</span
+          >
+          são blocos fundamentais em
+          <span
+            class="term"
+            text="JavaScript é uma linguagem de programação usada para adicionar interatividade às páginas web."
+            >JavaScript</span
+          >. Elas permitem encapsular lógica, facilitando a reutilização de
+          código e a organização de programas. Vamos explorar como criar e
+          utilizar funções de forma eficiente.
+        </p>
+
+        <!-- Funções Básicas -->
+        <h2>Criando Funções Básicas</h2>
+        <p>
+          Uma função é definida usando a palavra-chave
+          <code class="destaque">function</code>, seguida por um nome,
+          parênteses e chaves. Dentro das chaves, colocamos o código que será
+          executado quando a função for chamada.
+        </p>
+
+        <h3>Exemplo de Função Simples</h3>
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+function areaQuadrado(lado) {
+  return lado * lado;
+}
+
+console.log(areaQuadrado(4)); // 16
+console.log(areaQuadrado(5)); // 25
+console.log(areaQuadrado(2)); // 4
+          </code></pre>
+        </div>
+
+        <p>
+          No exemplo acima, definimos a função
+          <code class="destaque">areaQuadrado</code> que calcula a área de um
+          quadrado com base no comprimento do lado fornecido. Ao chamar a função
+          com diferentes valores, obtemos resultados distintos.
+        </p>
+
+        <h3>Função sem Parâmetros</h3>
+        <p>
+          Também podemos criar funções que não recebem parâmetros e retornam um
+          valor fixo ou realizam uma ação específica.
+        </p>
+
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+function pi() {
+  return 3.14;
+}
+
+var total = 5 * pi(); // 15.700000000000001
+console.log(total);
+          </code></pre>
+        </div>
+
+        <p>
+          Nesse caso, a função <code class="destaque">pi</code> retorna o valor
+          de pi, que é então utilizado em um cálculo.
+        </p>
+
+        <!-- Parâmetros e Argumentos -->
+        <h2>Parâmetros e Argumentos</h2>
+        <p>
+          Ao definir uma função, os valores dentro dos parênteses são chamados
+          de
+          <strong>parâmetros</strong>. Ao chamar a função, os valores passados
+          são os <strong>argumentos</strong>.
+        </p>
+
+        <h3>Exemplo com Parâmetros</h3>
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+// 'peso' e 'altura' são os parâmetros
+function imc(peso, altura) {
+  const imc = peso / (altura ** 2);
+  return imc;
+}
+
+// 80 e 1.80 são os argumentos
+console.log(imc(80, 1.80)); // 24.691358024691358
+console.log(imc(60, 1.70)); // 20.761245674740486
+          </code></pre>
+        </div>
+
+        <p>
+          Podemos definir quantos parâmetros forem necessários, separados por
+          vírgulas. Lembre-se de que os argumentos devem ser passados na mesma
+          ordem dos parâmetros.
+        </p>
+
+        <!-- Executando Funções -->
+        <h2>Executando Funções</h2>
+        <p>
+          Para executar uma função, utilizamos o nome da função seguido de
+          parênteses. Se a função requer parâmetros, devemos fornecê-los dentro
+          dos parênteses.
+        </p>
+
+        <h3>Exemplo de Chamada de Função</h3>
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+function corFavorita(cor) {
+  if (cor === 'azul') {
+    return 'Você gosta do céu';
+  } else if (cor === 'verde') {
+    return 'Você gosta de mato';
+  } else {
+    return 'Você não gosta de nada';
+  }
+}
+
+console.log(corFavorita('azul')); // 'Você gosta do céu'
+console.log(corFavorita()); // 'Você não gosta de nada'
+          </code></pre>
+        </div>
+
+        <p>
+          Se não chamarmos a função, nada dentro dela será executado. É
+          importante sempre lembrar de executar a função quando necessário.
+        </p>
+
+        <!-- Funções como Argumentos -->
+        <h2>Funções como Argumentos</h2>
+        <p>
+          Em JavaScript, podemos passar funções como argumentos para outras
+          funções. Essas são chamadas de
+          <span
+            class="term"
+            text="São passadas como argumento para outras funções e que são executadas após algum tipo de evento."
+            >callbacks</span
+          >. São muito utilizadas em eventos e operações assíncronas.
+        </p>
+
+        <h3>Exemplo com Callback</h3>
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+addEventListener('click', function() {
+  console.log('Clicou');
+});
+// A função possui dois argumentos:
+// 1º é a string 'click'
+// 2º é uma função anônima que será executada quando o evento ocorrer
+          </code></pre>
+        </div>
+
+        <p>
+          Funções anônimas são aquelas sem um nome específico e são definidas no
+          momento em que são passadas como argumentos.
+        </p>
+
+        <!-- Retorno de Funções -->
+        <h2>Retorno de Funções</h2>
+        <p>
+          Uma função pode ou não retornar um valor. Se não definirmos um
+          <code class="destaque">return</code>, a função retornará
+          <code class="destaque">undefined</code>. O código dentro da função
+          será executado normalmente.
+        </p>
+
+        <h3>Exemplo sem Retorno</h3>
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+function imc(peso, altura) {
+  const imc = peso / (altura ** 2);
+  console.log(imc);
+}
+
+imc(80, 1.80); // Exibe o IMC no console
+console.log(imc(80, 1.80)); // Exibe o IMC e 'undefined'
+          </code></pre>
+        </div>
+
+        <p>
+          No exemplo acima, a função
+          <code class="destaque">imc</code> não retorna um valor, apenas exibe o
+          resultado no console.
+        </p>
+
+        <!-- Tipos de Retorno -->
+        <h2>Tipos de Retorno</h2>
+        <p>
+          Uma função pode retornar qualquer tipo de dado, incluindo outras
+          funções. Porém, é importante manter a consistência nos tipos de
+          retorno para evitar confusões.
+        </p>
+
+        <h3>Exemplo de Retorno Condicional</h3>
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+function terceiraIdade(idade) {
+  if (typeof idade !== 'number') {
+    return 'Informe a sua idade!';
+  } else if (idade >= 60) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+console.log(terceiraIdade(65)); // true
+console.log(terceiraIdade(45)); // false
+console.log(terceiraIdade('sessenta')); // 'Informe a sua idade!'
+          </code></pre>
+        </div>
+
+        <p>
+          Neste exemplo, a função retorna valores de tipos diferentes (string,
+          boolean). Embora funcione, é uma boa prática manter o tipo de retorno
+          consistente.
+        </p>
+
+        <!-- Escopo -->
+        <h2>Escopo de Funções</h2>
+        <p>
+          Variáveis definidas dentro de uma função não são acessíveis fora dela.
+          Isso é chamado de
+          <span
+            class="term"
+            text="Escopo se refere à visibilidade de variáveis e funções em diferentes partes do código."
+            >escopo</span
+          >. Isso ajuda a evitar conflitos entre variáveis com o mesmo nome em
+          diferentes partes do código.
+        </p>
+
+        <h3>Exemplo de Escopo</h3>
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+function precisoVisitar(paisesVisitados) {
+  var totalPaises = 193;
+  return `Ainda faltam ${totalPaises - paisesVisitados} países para visitar`;
+}
+
+console.log(precisoVisitar(20)); // 'Ainda faltam 173 países para visitar'
+console.log(totalPaises); // Erro: totalPaises is not defined
+          </code></pre>
+        </div>
+
+        <p>
+          A variável <code class="destaque">totalPaises</code> está definida
+          dentro da função e não é acessível fora dela.
+        </p>
+
+        <!-- Escopo Léxico -->
+        <h2>Escopo Léxico</h2>
+        <p>
+          Funções em JavaScript possuem acesso ao escopo em que foram criadas.
+          Isso significa que elas podem acessar variáveis definidas no escopo
+          pai.
+        </p>
+
+        <h3>Exemplo de Escopo Léxico</h3>
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+var profissao = 'Programador';
+
+function dados() {
+  var nome = 'Matheus';
+  var idade = 18;
+
+  function outrosDados() {
+    var endereco = 'Santa Catarina';
+    var idade = 29;
+    return `${nome}, ${idade}, ${endereco}, ${profissao}`;
+  }
+
+  return outrosDados();
+}
+
+console.log(dados()); // 'Matheus, 29, Santa Catarina, Programador'
+console.log(outrosDados()); // Erro: outrosDados is not defined
+          </code></pre>
+        </div>
+
+        <p>
+          A função <code class="destaque">outrosDados</code> acessa variáveis do
+          escopo pai (<code class="destaque">nome</code>,
+          <code class="destaque">profissao</code>). Porém, não é acessível fora
+          da função <code class="destaque">dados</code>.
+        </p>
+
+        <!-- Hoisting -->
+        <h2>Hoisting em Funções</h2>
+        <p>
+          Em JavaScript, funções declaradas usando
+          <code class="destaque">function</code> são "elevadas" ao topo do
+          escopo, permitindo que sejam chamadas antes de serem definidas no
+          código. Isso é conhecido como
+          <span
+            class="term"
+            text="Hoisting é o comportamento padrão do JavaScript de mover declarações para o topo."
+            >hoisting</span
+          >.
+        </p>
+
+        <h3>Exemplo de Hoisting</h3>
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+imc(80, 1.80); // Executa corretamente
+
+function imc(peso, altura) {
+  const imc = peso / (altura ** 2);
+  console.log(imc);
+}
+          </code></pre>
+        </div>
+
+        <p>
+          Mesmo chamando a função antes de sua declaração, o código funciona
+          devido ao hoisting. Porém, é recomendado declarar funções antes de
+          utilizá-las para melhorar a legibilidade.
+        </p>
+
+        <!-- Exercícios -->
+        <h2>Exercícios</h2>
+        <p>
+          Vamos praticar o que aprendemos. Tente resolver os exercícios abaixo e
+          verifique suas respostas.
+        </p>
+
+        <ol>
+          <li>
+            Crie uma função para verificar se um valor é
+            <em>Truthy</em>.
+          </li>
+          <li>
+            Crie uma função matemática que retorne o perímetro de um quadrado.
+            <br />
+            Lembrando: perímetro é a soma dos quatro lados do quadrado.
+          </li>
+          <li>
+            Crie uma função que retorne o seu nome completo.
+            <br />
+            Ela deve possuir os parâmetros: <code class="destaque">nome</code> e
+            <code class="destaque">sobrenome</code>.
+          </li>
+          <li>Crie uma função que verifica se um número é par.</li>
+          <li>
+            Crie uma função que retorne o tipo de dado do argumento passado nela
+            (<code class="destaque">typeof</code>).
+          </li>
+          <li>
+            Utilize o <code class="destaque">addEventListener</code> para
+            mostrar no console o seu nome completo quando o evento 'scroll'
+            ocorrer.
+          </li>
+          <li>
+            Corrija o erro abaixo:
+            <div class="code-block">
+              <button class="copy-button">Copiar</button>
+              <pre><code class="language-javascript">
+function precisoVisitar(paisesVisitados) {
+  var totalPaises = 193;
+  return `Ainda faltam ${totalPaises - paisesVisitados} países para visitar`;
+}
+function jaVisitei(paisesVisitados) {
+  return `Já visitei ${paisesVisitados} do total de ${totalPaises} países`;
+}
+precisoVisitar(20);
+jaVisitei(20);
+              </code></pre>
+            </div>
+          </li>
+        </ol>
+
+        <h2>Conclusão</h2>
+        <p>
+          Nesta aula, exploramos o conceito de funções em JavaScript, entendendo
+          como criá-las, utilizá-las e os benefícios que elas trazem para a
+          organização e reutilização de código. Funções são ferramentas
+          poderosas que permitem modularizar seu código e facilitar a manutenção
+          e escalabilidade de seus projetos.
+        </p>
+
+        <p>
+          Na próxima aula, continuaremos aprofundando nossos conhecimentos em
+          JavaScript, explorando outros conceitos essenciais. Até lá!
+        </p>
+      </div>
+    </main>
+    <footer>
+      <p>&copy; 2024 Matheus Rocha</p>
+    </footer>
+    <!-- Script personalizado para o bloco de código -->
+    <script src="../../util/codeBlock.js"></script>
+  </body>
+</html>
