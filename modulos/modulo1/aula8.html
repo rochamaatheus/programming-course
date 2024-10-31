@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Estilos principais -->
+    <link rel="stylesheet" href="../../util/comumAula.css" />
+    <!-- Estilos para o Prism.js -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css"
+      rel="stylesheet"
+    />
+    <!-- Script do Prism.js -->
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"
+    ></script>
+    <title>Aula 8: Arrays e Loops em JavaScript</title>
+  </head>
+  <body>
+    <header>
+      <h1>Explorando Arrays e Loops em JavaScript</h1>
+    </header>
+    <main>
+      <div class="article-content">
+        <a href="../../index.html" class="button"
+          >Voltar para a Página Principal</a
+        >
+
+        <!-- Introdução aos Arrays -->
+        <h2>Introdução aos Arrays</h2>
+        <p>
+          Um
+          <span
+            class="term"
+            text="Arrays são objetos usados para armazenar múltiplos valores em uma única variável."
+            >array</span
+          >
+          é uma coleção de valores geralmente relacionados. Eles são úteis para
+          armazenar diferentes valores em uma única variável, facilitando a
+          organização e manipulação dos dados.
+        </p>
+
+        <h3>Exemplo de Array</h3>
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+var comidasFavoritas = ['Pizza', 'Hambúrguer', 'Sushi'];
+
+console.log(comidasFavoritas[0]); // 'Pizza'
+console.log(comidasFavoritas[2]); // 'Sushi'
+          </code></pre>
+        </div>
+
+        <p>
+          Podemos acessar um elemento específico de um array usando a notação de
+          colchetes <code class="destaque">[]</code> com o índice do elemento
+          desejado. Lembre-se de que os índices em arrays começam em
+          <code class="destaque">0</code>.
+        </p>
+
+        <!-- Métodos e Propriedades de Arrays -->
+        <h2>Métodos e Propriedades de Arrays</h2>
+        <p>
+          Arrays em JavaScript vêm com uma variedade de métodos e propriedades
+          úteis que nos permitem manipular os dados de forma eficiente.
+        </p>
+
+        <h3>Manipulando Arrays</h3>
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+var filmes = ['Interstellar', 'Inception', 'Matrix'];
+
+filmes.push('O Poderoso Chefão'); // Adiciona ao final
+filmes.pop(); // Remove o último item
+console.log(filmes.length); // 3
+          </code></pre>
+        </div>
+
+        <p>
+          No exemplo acima, utilizamos o método
+          <code class="destaque">push()</code> para adicionar um item ao final
+          do array e o método <code class="destaque">pop()</code> para remover o
+          último item. A propriedade
+          <code class="destaque">length</code> retorna o tamanho atual do array.
+        </p>
+
+        <p>
+          Existem diversos outros métodos disponíveis, como
+          <code class="destaque">map</code>,
+          <code class="destaque">filter</code>,
+          <code class="destaque">reduce</code> e
+          <code class="destaque">forEach</code>, que exploraremos mais adiante.
+        </p>
+
+        <!-- Loops: For e While -->
+        <h2>
+          Loops: <code class="destaque">for</code> e
+          <code class="destaque">while</code>
+        </h2>
+        <p>
+          Loops são estruturas que nos permitem repetir um bloco de código
+          enquanto uma condição for verdadeira. O loop
+          <code class="destaque">for</code> é um dos mais utilizados em
+          JavaScript.
+        </p>
+
+        <h3>Loop <code class="destaque">for</code></h3>
+        <p>
+          O loop <code class="destaque">for</code> é composto por três partes:
+          inicialização, condição e incremento. Ele executa um bloco de código
+          até que a condição seja falsa.
+        </p>
+
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+for (var numero = 1; numero <= 5; numero++) {
+  console.log('Número: ' + numero);
+}
+// Irá imprimir os números de 1 a 5
+          </code></pre>
+        </div>
+
+        <p>
+          No exemplo acima, inicializamos a variável
+          <code class="destaque">numero</code> com
+          <code class="destaque">1</code>, definimos a condição para que o loop
+          continue enquanto <code class="destaque">numero <= 5</code>, e
+          incrementamos <code class="destaque">numero</code> em
+          <code class="destaque">1</code> a cada iteração.
+        </p>
+
+        <h3>Loop <code class="destaque">while</code></h3>
+        <p>
+          O loop <code class="destaque">while</code> executa um bloco de código
+          enquanto uma condição for verdadeira.
+        </p>
+
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+var contador = 5;
+while (contador > 0) {
+  console.log('Contagem regressiva: ' + contador);
+  contador--;
+}
+// Irá imprimir de 5 até 1
+          </code></pre>
+        </div>
+
+        <p>
+          No exemplo acima, o loop continua executando enquanto
+          <code class="destaque">contador > 0</code>, decrementando o valor de
+          <code class="destaque">contador</code> a cada iteração.
+        </p>
+
+        <!-- Usando Loops com Arrays -->
+        <h2>Usando Loops com Arrays</h2>
+        <p>
+          Uma das principais utilidades dos loops é iterar sobre arrays,
+          permitindo acessar e manipular cada elemento individualmente.
+        </p>
+
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+var comidasFavoritas = ['Pizza', 'Hambúrguer', 'Sushi', 'Tacos'];
+for (var i = 0; i < comidasFavoritas.length; i++) {
+  console.log('Eu adoro ' + comidasFavoritas[i]);
+}
+          </code></pre>
+        </div>
+
+        <p>
+          Neste exemplo, usamos o loop <code class="destaque">for</code> para
+          percorrer o array <code class="destaque">comidasFavoritas</code>,
+          acessando cada elemento através de
+          <code class="destaque">comidasFavoritas[i]</code> e exibindo uma
+          mensagem no console.
+        </p>
+
+        <!-- O Comando Break -->
+        <h2>O Comando <code class="destaque">break</code></h2>
+        <p>
+          O comando <code class="destaque">break</code> interrompe a execução de
+          um loop, mesmo que a condição ainda seja verdadeira. Isso é útil
+          quando encontramos o que estamos procurando e não precisamos continuar
+          a iterar.
+        </p>
+
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+var comidasFavoritas = ['Pizza', 'Hambúrguer', 'Sushi', 'Tacos'];
+for (var i = 0; i < comidasFavoritas.length; i++) {
+  console.log(comidasFavoritas[i]);
+  if (comidasFavoritas[i] === 'Sushi') {
+    console.log('Encontrei meu prato preferido!');
+    break;
+  }
+}
+          </code></pre>
+        </div>
+
+        <p>
+          No exemplo acima, o loop irá parar quando encontrar 'Sushi', graças ao
+          uso do <code class="destaque">break</code>.
+        </p>
+
+        <!-- O Método forEach -->
+        <h2>O Método <code class="destaque">forEach</code></h2>
+        <p>
+          O método <code class="destaque">forEach</code> é uma forma mais
+          concisa de iterar sobre arrays. Ele executa uma função callback para
+          cada item do array.
+        </p>
+
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+var frutas = ['Maçã', 'Banana', 'Laranja', 'Manga'];
+frutas.forEach(function(fruta, indice) {
+  console.log('Fruta ' + indice + ': ' + fruta);
+});
+          </code></pre>
+        </div>
+
+        <p>
+          No exemplo, a função callback recebe os parâmetros
+          <code class="destaque">fruta</code> (o item atual) e
+          <code class="destaque">indice</code> (a posição do item no array),
+          permitindo acessar e utilizar essas informações.
+        </p>
+
+        <!-- Não se Confunda com a Sintaxe -->
+        <h2>Não se Confunda com a Sintaxe</h2>
+        <p>
+          Às vezes, encontramos loops escritos de maneiras menos convencionais.
+          Por exemplo:
+        </p>
+
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+var numero = 0;
+var maximo = 5;
+for (; numero < maximo;) {
+  console.log(numero);
+  numero++;
+}
+          </code></pre>
+        </div>
+
+        <p>
+          Embora funcione, essa forma de escrever um loop pode ser confusa. É
+          importante manter a clareza do código, seguindo as convenções comuns.
+        </p>
+
+        <!-- Exercícios -->
+        <h2>Exercícios</h2>
+        <p>
+          Vamos praticar o que aprendemos. Tente resolver os exercícios abaixo.
+        </p>
+
+        <ol>
+          <li>
+            Crie uma array com os anos em que o Brasil ganhou a Copa do Mundo.
+            <br />
+            Exemplo:
+            <code class="destaque">[1958, 1962, 1970, 1994, 2002]</code>
+          </li>
+          <li>
+            Interaja com o array utilizando um loop, para mostrar no console a
+            seguinte mensagem:
+            <br />
+            <code class="destaque">"O Brasil ganhou a Copa de ${ano}"</code>
+          </li>
+          <li>
+            Interaja com o array de frutas abaixo e pare ao chegar em 'Pera':
+            <div class="code-block">
+              <button class="copy-button">Copiar</button>
+              <pre><code class="language-javascript">
+var frutas = ['Banana', 'Maçã', 'Pera', 'Uva', 'Melancia'];
+              </code></pre>
+            </div>
+          </li>
+          <li>
+            Coloque a última fruta do array acima em uma variável, sem removê-la
+            do array.
+          </li>
+        </ol>
+
+        <!-- Conclusão -->
+        <h2>Conclusão</h2>
+        <p>
+          Nesta aula, exploramos como trabalhar com arrays e loops em
+          JavaScript. Compreendemos como os arrays são úteis para armazenar
+          múltiplos valores e como os loops nos permitem iterar sobre esses
+          valores de forma eficiente.
+        </p>
+      </div>
+    </main>
+    <footer>
+      <p>&copy; 2024 Matheus Rocha</p>
+    </footer>
+    <!-- Script personalizado para o bloco de código -->
+    <script src="../../util/codeBlock.js"></script>
+  </body>
+</html>
