@@ -8,20 +8,19 @@
 html,
 body {
   height: 100%;
-  overflow-x: hidden;
 }
 
 body {
   font-family: 'Helvetica Neue', Arial, sans-serif;
-  background-color: #222; /* Fundo cinza escuro */
-  color: #dcdcdc; /* Texto cinza claro */
+  background-color: #222;
+  color: #dcdcdc;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
 header {
-  background-color: #4b1670; /* Tom de roxo mais escuro */
+  background-color: #4b1670;
   color: #fff;
   padding: 20px 0;
   text-align: center;
@@ -38,7 +37,7 @@ main {
 }
 
 footer {
-  background-color: #4b1670; /* Mesmo tom do cabeçalho */
+  background-color: #4b1670;
   color: #f7f7f7;
   text-align: center;
   padding: 10px 0;
@@ -48,23 +47,24 @@ footer {
 .article-content {
   max-width: 800px;
   margin: 0 auto;
+  word-wrap: break-word; /* Garante que o texto quebre linhas */
 }
 
 .article-content h2 {
   font-size: 1.8em;
-  margin: 40px 0 20px; /* Aumentado o espaço acima */
-  color: #9d5bd2; /* Tom de roxo para subtítulos */
+  margin: 40px 0 20px;
+  color: #9d5bd2;
 }
 
 .article-content h3 {
   font-size: 1.5em;
-  margin: 30px 0 15px; /* Espaçamento acima e abaixo */
+  margin: 30px 0 15px;
   color: #a879d9;
 }
 
 .article-content p {
   font-size: 1em;
-  line-height: 1.8; /* Aumentado para melhorar a legibilidade */
+  line-height: 1.8;
   margin-bottom: 20px;
   color: #dcdcdc;
 }
@@ -73,7 +73,7 @@ footer {
 .article-content ol {
   margin-left: 40px;
   margin-bottom: 20px;
-  line-height: 1.8; /* Consistência com os parágrafos */
+  line-height: 1.8;
 }
 
 .article-content li {
@@ -81,11 +81,11 @@ footer {
 }
 
 .article-content li:last-child {
-  margin-bottom: 0; /* Remove o espaçamento do último item */
+  margin-bottom: 0;
 }
 
 .article-content strong {
-  color: #ffffff; /* Destaca textos em negrito */
+  color: #ffffff;
 }
 
 .article-content code,
@@ -94,6 +94,7 @@ footer {
   padding: 2px 4px;
   border-radius: 4px;
   font-family: 'Courier New', monospace;
+  word-wrap: break-word; /* Quebra linhas em códigos */
 }
 
 .article-content code.destaque {
@@ -102,7 +103,7 @@ footer {
 
 /* Links */
 a {
-  color: #a879d9; /* Tom de roxo claro para links */
+  color: #a879d9;
   text-decoration: none;
 }
 
@@ -113,7 +114,7 @@ a:hover:not(.button) {
 /* Botões */
 .button {
   display: inline-block;
-  background-color: #7b24b1; /* Tom de roxo médio */
+  background-color: #7b24b1;
   color: #fff;
   padding: 10px 20px;
   margin-bottom: 20px;
@@ -124,27 +125,28 @@ a:hover:not(.button) {
 }
 
 .button:hover {
-  background-color: #9d5bd2; /* Tom de roxo mais claro */
+  background-color: #9d5bd2;
 }
 
 /* Estilos para os blocos de código */
 .code-block {
   position: relative;
   margin: 20px 0;
-  background-color: #333; /* Fundo do bloco de código */
+  background-color: #333;
   border-radius: 8px;
-  overflow: hidden;
+  overflow-x: auto; /* Permite rolagem horizontal se necessário */
 }
 
 .code-block pre {
   margin: 0;
   padding: 0 20px;
   overflow-x: auto;
+  white-space: pre-wrap; /* Quebra linhas dentro do código */
 }
 
 pre {
   tab-size: 4;
-  white-space: pre;
+  white-space: pre-wrap;
   overflow-x: auto;
 }
 
@@ -170,14 +172,6 @@ pre {
   background-color: #9d5bd2; /* Tom de roxo mais claro ao passar o mouse */
 }
 
-/* Imagens */
-.article-content img {
-  max-width: 100%;
-  height: auto;
-  margin: 20px 0;
-}
-
-/* Estilização para termos com tooltip */
 .term {
   background-color: rgba(183, 36, 177, 0.1);
   color: #a879d9;
@@ -185,49 +179,46 @@ pre {
   padding: 2px 4px;
   border-radius: 4px;
   font-size: 0.95rem;
-  position: relative;
+  position: relative; /* Mantém o contexto para posicionamento */
   cursor: help;
 }
 
-/* Tooltip customizado */
-.term::after {
-  content: attr(text); /* Pega o texto do atributo text */
+/* Estilos para a tooltip */
+.tooltip-box {
   position: absolute;
-  bottom: 125%; /* Posiciona acima do texto */
-  left: 50%;
-  transform: translateX(-50%);
   background-color: #4b1670;
   color: #fff;
   padding: 5px 10px;
   border-radius: 4px;
-  white-space: nowrap;
-  opacity: 0;
-  visibility: hidden;
+  max-width: 250px; /* Limite máximo da largura */
+  width: fit-content; /* Ajusta a largura conforme o conteúdo */
+  box-sizing: border-box;
+  word-wrap: break-word;
+  z-index: 1000;
   transition: opacity 0.2s ease-in-out;
-  z-index: 1;
 }
 
-/* Triângulo abaixo do tooltip */
-.term::before {
-  content: '';
-  position: absolute;
-  bottom: 115%; /* Ajuste para alinhar com o tooltip */
+.tooltip-box[data-position='top']::after {
+  bottom: -5px;
   left: 50%;
   transform: translateX(-50%);
-  border-width: 5px;
-  border-style: solid;
-  border-color: transparent transparent #4b1670 transparent;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.2s ease-in-out;
-  z-index: 1;
+  border-width: 5px 5px 0 5px;
+  border-color: #4b1670 transparent transparent transparent;
 }
 
-/* Mostrar o tooltip ao passar o mouse */
-.term:hover::after,
-.term:hover::before {
-  opacity: 1;
-  visibility: visible;
+.tooltip-box[data-position='bottom']::after {
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%) rotate(180deg);
+  border-width: 5px 5px 0 5px;
+  border-color: #4b1670 transparent transparent transparent;
+}
+
+/* Imagens */
+.article-content img {
+  max-width: 100%;
+  height: auto;
+  margin: 20px 0;
 }
 
 /* Tabelas */
@@ -250,6 +241,28 @@ pre {
 
 .article-content td {
   background-color: #2e2e2e;
+}
+
+/* Estilos para o Botão de Voltar ao Topo */
+#backToTopButton {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 50%;
+  background-color: #4b1670;
+  color: #fff;
+  cursor: pointer;
+  font-size: 20px;
+  display: none;
+  z-index: 1000;
+  opacity: 0.6;
+  transition: opacity 0.3s;
+}
+
+#backToTopButton:hover {
+  opacity: 1;
 }
 
 /* Responsividade */
