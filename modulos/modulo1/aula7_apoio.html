@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Estilos principais -->
+    <link rel="stylesheet" href="../../util/comumAula.css" />
+    <!-- Estilos para o Prism.js -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css"
+      rel="stylesheet"
+    />
+    <!-- Script do Prism.js -->
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"
+    ></script>
+    <title>Aula de Apoio: Introdução ao DOM</title>
+  </head>
+  <body>
+    <header>
+      <h1>Aula de Apoio: Introdução ao DOM</h1>
+    </header>
+    <main>
+      <div class="article-content">
+        <a href="../../index.html" class="button"
+          >Voltar para a Página Principal</a
+        >
+
+        <h2>Introdução</h2>
+        <p>
+          Na aula anterior, falamos sobre como em JavaScript "Tudo é Objeto", e
+          mencionamos brevemente o
+          <span class="term" data-tooltip="Document Object Model">DOM</span>.
+          Alguns alunos expressaram dificuldades em compreender esse conceito e
+          como ele se relaciona com os objetos em JavaScript. Nesta aula de
+          apoio, vamos explorar o DOM de forma mais detalhada, entendendo seu
+          papel fundamental na interação entre JavaScript e as páginas web.
+        </p>
+
+        <h2>O que é o DOM?</h2>
+        <p>
+          O <strong>Document Object Model (DOM)</strong> é uma interface de
+          programação que representa documentos HTML e XML como uma árvore de
+          objetos. Isso permite que linguagens de programação, como JavaScript,
+          acessem e modifiquem o conteúdo, estrutura e estilo de uma página web.
+        </p>
+
+        <h2>A Estrutura do DOM</h2>
+        <p>
+          Imagine o DOM como uma árvore genealógica, onde cada
+          <span
+            class="term"
+            data-tooltip="Cada elemento HTML se torna um nó em uma estrutura de árvore, permitindo hierarquia e organização"
+            >elemento HTML</span
+          >
+          é um nó nessa árvore. Essa estrutura hierárquica permite navegar pelos
+          elementos e acessar suas propriedades e métodos.
+        </p>
+        <img
+          style="display: block; margin: 0 auto"
+          width="300"
+          src="https://th.bing.com/th/id/OIP.edxAwYlCiQ11Zk8oqo_oXAHaHq?w=1200&h=1242&rs=1&pid=ImgDetMain"
+          alt="Estrutura do DOM"
+        />
+
+        <h2>Relacionamento entre o DOM e Objetos em JavaScript</h2>
+        <p>
+          Em JavaScript, <code class="destaque">quase tudo é um objeto</code>,
+          incluindo elementos do DOM. Cada elemento HTML no DOM é representado
+          como um objeto que possui
+          <span
+            class="term"
+            data-tooltip="As propriedades definem características dos objetos, como tamanho ou cor, enquanto métodos definem o que eles podem fazer, como adicionar uma classe."
+            >propriedades e métodos</span
+          >
+          que podemos acessar e manipular. Isso nos permite, por exemplo,
+          alterar o texto de um parágrafo, modificar atributos e muito mais.
+        </p>
+
+        <h2>Acessando Elementos do DOM com JavaScript</h2>
+        <p>
+          Para manipular o DOM, primeiro precisamos acessar os elementos
+          desejados. JavaScript fornece diversos métodos para selecionar
+          elementos:
+        </p>
+
+        <h3>Usando <code class="destaque">getElementById</code></h3>
+
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-html">
+&lt;p id="meuParagrafo"&gt;Olá, mundo!&lt;/p&gt;
+          </code></pre>
+        </div>
+
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+var paragrafo = document.getElementById('meuParagrafo');
+console.log(paragrafo); // Verifique a saída no browser
+          </code></pre>
+        </div>
+
+        <h3>Usando <code class="destaque">getElementsByClassName</code></h3>
+
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-html">
+&lt;ul&gt;
+  &lt;li class="item"&gt;Item 1&lt;/li&gt;
+  &lt;li class="item"&gt;Item 2&lt;/li&gt;
+&lt;/ul&gt;
+          </code></pre>
+        </div>
+
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+var itens = document.getElementsByClassName('item');
+console.log(itens); // Verifique a saída no browser
+          </code></pre>
+        </div>
+
+        <h3>
+          Usando <code class="destaque">querySelector</code> e
+          <code class="destaque">querySelectorAll</code>
+        </h3>
+
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-html">
+&lt;div class="container"&gt;
+  &lt;p&gt;Parágrafo dentro do container.&lt;/p&gt;
+&lt;/div&gt;
+          </code></pre>
+        </div>
+
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+var container = document.querySelector('.container');
+console.log(container); // Verifique a saída no browser
+          </code></pre>
+        </div>
+
+        <h2>Manipulando Elementos do DOM</h2>
+        <p>
+          Após selecionar os elementos, podemos manipular suas propriedades para
+          alterar o conteúdo ou estilo.
+        </p>
+
+        <h3>Exemplo: Alterando o Conteúdo de um Elemento</h3>
+
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-html">
+&lt;h1 id="titulo"&gt;Título Original&lt;/h1&gt;
+          </code></pre>
+        </div>
+
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+var titulo = document.getElementById('titulo');
+titulo.innerText = 'Título Alterado via JavaScript';
+          </code></pre>
+        </div>
+
+        <h3>Modificando Estilos</h3>
+
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+titulo.style.color = 'blue';
+          </code></pre>
+        </div>
+
+        <h2>Eventos e Interação com o Usuário</h2>
+        <p>
+          Os
+          <span
+            class="term"
+            data-tooltip="Eventos são ações ou ocorrências que o JavaScript pode detectar para interagir com o usuário ou responder a ações na página, como cliques ou teclas pressionadas."
+            >eventos</span
+          >
+          permitem que nossa página responda às interações do usuário, como
+          cliques, teclas pressionadas, e muito mais.
+        </p>
+
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-html">
+&lt;button id="meuBotao"&gt;Clique em mim&lt;/button&gt;
+          </code></pre>
+        </div>
+
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+var botao = document.getElementById('meuBotao');
+botao.addEventListener('click', function() {
+  alert('Você clicou no botão!');
+});
+          </code></pre>
+        </div>
+
+        <h2>Exemplo Completo</h2>
+        <p>
+          Vamos criar um exemplo onde interagimos com o DOM para criar uma lista
+          de tarefas simples.
+        </p>
+
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-html">
+&lt;input type="text" id="novaTarefa" placeholder="Adicione uma nova tarefa"&gt;
+&lt;button id="adicionarTarefa"&gt;Adicionar&lt;/button&gt;
+&lt;ul id="listaTarefas"&gt;&lt;/ul&gt;
+          </code></pre>
+        </div>
+
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+var inputTarefa = document.getElementById('novaTarefa');
+var botaoAdicionar = document.getElementById('adicionarTarefa');
+var listaTarefas = document.getElementById('listaTarefas');
+
+botaoAdicionar.addEventListener('click', function() {
+  var tarefaTexto = inputTarefa.value;
+  if (tarefaTexto !== '') {
+    var novaLI = document.createElement('li');
+    novaLI.innerText = tarefaTexto;
+    listaTarefas.appendChild(novaLI);
+    inputTarefa.value = '';
+  }
+});
+          </code></pre>
+        </div>
+
+        <h2>Resumo</h2>
+        <ul>
+          <li>
+            <strong>DOM</strong> é a representação em árvore de um documento
+            HTML ou XML.
+          </li>
+          <li>Elementos do DOM são objetos manipuláveis com JavaScript.</li>
+          <li>
+            Podemos acessar e modificar propriedades e métodos dos objetos DOM
+            para alterar conteúdo e estilo.
+          </li>
+        </ul>
+
+        <h2>Exercícios</h2>
+        <ol>
+          <li>
+            Selecione o elemento <code class="destaque">&lt;h1&gt;</code> de uma
+            página e altere seu texto para "Olá, DOM!".
+            <p>
+              <strong>Dica:</strong> Use
+              <code class="destaque">document.querySelector</code> ou
+              <code class="destaque">document.getElementById</code> para
+              selecionar o elemento <code class="destaque">&lt;h1&gt;</code>, e
+              a propriedade <code class="destaque">innerText</code> para alterar
+              o conteúdo.
+            </p>
+          </li>
+          <li>
+            Altere a cor de fundo de todos os parágrafos (<code class="destaque"
+              >&lt;p&gt;</code
+            >) para amarelo.
+            <p>
+              <strong>Dica:</strong> Você pode usar
+              <code class="destaque">document.querySelectorAll</code> para
+              selecionar todos os parágrafos e um loop para aplicar a cor de
+              fundo usando <code class="destaque">style.backgroundColor</code>.
+            </p>
+          </li>
+          <li>
+            Crie um botão que, ao ser clicado, oculte um elemento na página.
+            <p>
+              <strong>Dica:</strong> Primeiro, selecione o botão e o elemento
+              que deseja ocultar. Em seguida, adicione um evento de clique ao
+              botão usando <code class="destaque">addEventListener</code> e
+              defina a propriedade
+              <code class="destaque">style.display</code> do elemento como
+              <code class="destaque">"none"</code> para ocultá-lo.
+            </p>
+          </li>
+          <li>
+            Adicione um novo item a uma lista (<code class="destaque"
+              >&lt;ul&gt;</code
+            >
+            ou <code class="destaque">&lt;ol&gt;</code>) ao clicar em um botão.
+            <p>
+              <strong>Dica:</strong> Use
+              <code class="destaque">document.createElement</code> para criar o
+              novo item da lista e
+              <code class="destaque">appendChild</code> para adicioná-lo à
+              lista. Não se esqueça de adicionar um evento de clique ao botão
+              para executar essa ação.
+            </p>
+          </li>
+        </ol>
+
+        <h2>Conclusão</h2>
+        <p>
+          O <span class="term" data-tooltip="Document Object Model">DOM</span> é
+          uma das peças fundamentais para tornar uma página web interativa. Ao
+          entender como ele funciona, conseguimos acessar e modificar quase
+          todos os elementos do HTML, criando experiências mais dinâmicas para o
+          usuário. Nesta aula de apoio, exploramos desde a estrutura do DOM,
+          suas relações com objetos JavaScript e alguns dos métodos mais comuns
+          para selecionar e manipular elementos.
+        </p>
+        <p>
+          <strong>Lembre-se</strong>:
+          <code class="destaque">
+            cada elemento HTML na página é representado como um objeto que você
+            pode acessar e modificar com JavaScript </code
+          >. As funcionalidades do DOM, combinadas com a lógica e poder do
+          JavaScript, formam a base para construir uma página responsiva e
+          interativa. À medida que avançarmos nas aulas, você verá ainda mais
+          formas de manipular o DOM para responder a eventos, modificar
+          conteúdos e aplicar efeitos visuais.
+        </p>
+        <p>
+          Esta introdução ao DOM deve ajudá-lo a entender melhor a relação entre
+          JavaScript e os elementos visíveis da página, preparando você para
+          temas mais avançados de manipulação do DOM no futuro.
+        </p>
+        <p>
+          Continue explorando e experimente novas ideias usando o DOM em seus
+          projetos pessoais. Essa prática é essencial para consolidar o que
+          aprendeu. Bons estudos!
+        </p>
+      </div>
+    </main>
+    <footer>
+      <p>&copy; 2024 Matheus Rocha</p>
+    </footer>
+    <script src="../../util/codeBlock.js"></script>
+    <script src="../../util/backToTop.js"></script>
+    <script src="../../util/tooltip.js"></script>
+  </body>
+</html>
