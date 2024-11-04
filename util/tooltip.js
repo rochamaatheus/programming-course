@@ -41,7 +41,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Armazena a referência da tooltip para remoção posterior
     term._tooltipBox = tooltipBox;
-    console.log(term);
   }
 
   function hideTooltip(event) {
