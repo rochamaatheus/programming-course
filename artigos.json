@@ -39,6 +39,11 @@
         "link": "modulos/modulo1/aula7.html"
       },
       {
+        "title": "Aula de Apoio (Aula 7): Introdução ao DOM",
+        "description": "Nesta aula de apoio, você será introduzido ao DOM no contexto de como ele representa a estrutura da página e como JavaScript pode interagir com elementos HTML.",
+        "link": "modulos/modulo1/aula7_apoio.html"
+      },
+      {
         "title": "Aula 8: Arrays e Loops em JavaScript",
         "description": "Nesta aula, você irá aprender sobre arrays e loops, explorando métodos úteis e estruturas de repetição para manipular coleções de dados.",
         "link": "modulos/modulo1/aula8.html"
