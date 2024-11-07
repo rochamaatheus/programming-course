@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Estilos principais -->
+    <link rel="stylesheet" href="../../util/comumAula.css" />
+    <!-- Estilos para o Prism.js -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css"
+      rel="stylesheet"
+    />
+    <!-- Script do Prism.js -->
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"
+    ></script>
+    <title>Aula 10: Escopo de Função em JavaScript</title>
+  </head>
+  <body>
+    <header>
+      <h1>Escopo de Função em JavaScript</h1>
+    </header>
+    <main>
+      <div class="article-content">
+        <a href="../../index.html" class="button"
+          >Voltar para a Página Principal</a
+        >
+
+        <!-- Descrição -->
+        <h2>Descrição</h2>
+        <p>
+          Nesta aula, vamos explorar o conceito de
+          <span
+            class="term"
+            data-tooltip="O escopo define onde uma variável ou função pode ser acessada no código."
+            >escopo</span
+          >
+          em JavaScript, com foco no escopo de função e no escopo de bloco,
+          essenciais para escrever código organizado e seguro. Veremos por que
+          evitar variáveis
+          <span
+            class="term"
+            data-tooltip="Variáveis globais são acessíveis em qualquer lugar do código, o que aumenta o risco de conflitos e problemas de manutenção."
+            >globais</span
+          >
+          e entenderemos o uso de <code class="destaque">const</code> e
+          <code class="destaque">let</code> para melhor controle de escopo.
+        </p>
+
+        <!-- Escopo de Função -->
+        <h2>Escopo de Função</h2>
+        <p>
+          Em JavaScript, as variáveis declaradas dentro de uma
+          <span
+            class="term"
+            data-tooltip="Funções são blocos de código executados apenas quando chamados. Podem conter variáveis e outros blocos de código."
+            >função</span
+          >
+          existem apenas no contexto dessa função e não podem ser acessadas de
+          fora dela. Isso ajuda a evitar conflitos entre variáveis de diferentes
+          partes do código.
+        </p>
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+function mostrarCarro() {
+  var carro = 'Fusca';
+  console.log(carro);
+}
+
+mostrarCarro(); // Fusca
+console.log(carro); // Erro: carro is not defined
+          </code></pre>
+        </div>
+        <p>
+          O exemplo acima mostra que a variável
+          <code class="destaque">carro</code> está limitada ao escopo da função
+          <code class="destaque">mostrarCarro</code>. Isso é útil para manter o
+          código modular e evitar que variáveis sejam acessadas por acidente
+          fora de onde deveriam ser usadas.
+        </p>
+
+        <!-- Variável Global (Evite!) -->
+        <h2>Variável Global (Evite!)</h2>
+        <p>
+          Em JavaScript, declarar variáveis sem
+          <code class="destaque">var</code>,
+          <code class="destaque">let</code> ou
+          <code class="destaque">const</code> faz com que a variável seja criada
+          como
+          <span
+            class="term"
+            data-tooltip="Variáveis globais são visíveis em todo o programa, aumentando o risco de conflitos e dificultando a depuração."
+            >global</span
+          >. Isso pode causar problemas graves, pois a variável fica acessível e
+          pode ser alterada de qualquer lugar do programa.
+        </p>
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+function mostrarCarro() {
+  carro = 'Fusca'; // Variável global (má prática)
+  console.log(carro);
+}
+
+mostrarCarro(); // Fusca
+console.log(carro); // Fusca (acessível globalmente)
+          </code></pre>
+        </div>
+        <p>
+          Para evitar essa situação, ative o
+          <span
+            class="term"
+            data-tooltip="'use strict' é uma diretiva que impede comportamentos problemáticos e facilita a depuração."
+            >modo estrito</span
+          >
+          usando <code class="destaque">'use strict';</code> no início do script
+          ou função.
+        </p>
+
+        <!-- Escopo de Função (Pai) -->
+        <h2>Escopo de Função (Pai)</h2>
+        <p>
+          Variáveis declaradas no escopo pai de uma função (fora dela) são
+          acessíveis dentro da função. No exemplo abaixo,
+          <code class="destaque">carro</code> é uma variável do escopo global e
+          pode ser usada dentro de <code class="destaque">mostrarCarro</code>.
+        </p>
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+var carro = 'Fusca';
+
+function mostrarCarro() {
+  var frase = `Meu carro é um ${carro}`;
+  console.log(frase);
+}
+
+mostrarCarro(); // Meu carro é um Fusca
+console.log(carro); // Fusca
+          </code></pre>
+        </div>
+
+        <!-- Escopo de Bloco -->
+        <h2>Escopo de Bloco</h2>
+        <p>
+          Blocos de código em JavaScript são delimitados por chaves
+          <code class="destaque">{}</code>. Variáveis declaradas com
+          <code class="destaque">var</code> dentro de um bloco podem
+          <span
+            class="term"
+            data-tooltip="Quando uma variável 'vaza', ela continua acessível fora do bloco em que foi declarada."
+            >vazar</span
+          >
+          para fora dele, enquanto <code class="destaque">let</code> e
+          <code class="destaque">const</code> respeitam o escopo de bloco.
+        </p>
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+if (true) {
+  var carro = 'Fusca';
+  console.log(carro);
+}
+
+console.log(carro); // Fusca (variável vazou do bloco)
+          </code></pre>
+        </div>
+
+        <!-- const e let no Lugar de var -->
+        <h2>
+          Por Que Preferir <code class="destaque">const</code> e
+          <code class="destaque">let</code> ao Invés de
+          <code class="destaque">var</code>?
+        </h2>
+        <p>
+          As palavras-chave <code class="destaque">const</code> e
+          <code class="destaque">let</code> foram introduzidas no ES6 e são
+          recomendadas para declarações de variáveis, pois respeitam o escopo de
+          bloco. Além disso, <code class="destaque">const</code> permite
+          declarar variáveis que não podem ser reatribuídas, garantindo maior
+          segurança no código.
+        </p>
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+if (true) {
+  const carro = 'Fusca';
+  console.log(carro); // Fusca
+}
+
+console.log(carro); // Erro: carro is not defined
+          </code></pre>
+        </div>
+
+        <!-- Exercícios -->
+        <h2>Exercícios</h2>
+        <p>
+          Vamos praticar o que aprendemos! Tente resolver os exercícios abaixo.
+        </p>
+        <ol>
+          <li>
+            Por qual motivo o código abaixo retorna com erros?
+            <div class="code-block">
+              <button class="copy-button">Copiar</button>
+              <pre><code class="language-javascript">
+{
+  var cor = 'preto';
+  const marca = 'Fiat';
+  let portas = 4;
+}
+console.log(cor, marca, portas);
+              </code></pre>
+            </div>
+          </li>
+          <li>
+            Como corrigir o erro abaixo?
+            <div class="code-block">
+              <button class="copy-button">Copiar</button>
+              <pre><code class="language-javascript">
+function somarDois(x) {
+  const dois = 2;
+  return x + dois;
+}
+
+function dividirDois(x) {
+  return x + dois;
+}
+
+somarDois(4);
+dividirDois(6);
+              </code></pre>
+            </div>
+          </li>
+          <li>
+            O que fazer para <code class="destaque">total</code> retornar 500?
+            <div class="code-block">
+              <button class="copy-button">Copiar</button>
+              <pre><code class="language-javascript">
+var numero = 50;
+
+for (var numero = 0; numero < 10; numero++) {
+  console.log(numero);
+}
+
+const total = 10 * numero;
+console.log(total);
+              </code></pre>
+            </div>
+          </li>
+        </ol>
+
+        <!-- Conclusão -->
+        <h2>Conclusão</h2>
+        <p>
+          Compreender o escopo de variáveis é essencial para escrever código
+          limpo e evitar conflitos. Use <code class="destaque">const</code> e
+          <code class="destaque">let</code> para garantir que variáveis sejam
+          usadas apenas onde realmente precisam estar, aumentando a segurança e
+          previsibilidade do seu código.
+        </p>
+      </div>
+    </main>
+    <footer>
+      <p>&copy; 2024 Matheus Rocha</p>
+    </footer>
+    <!-- Scripts personalizados -->
+    <script src="../../util/codeBlock.js"></script>
+    <script src="../../util/backToTop.js"></script>
+    <script src="../../util/tooltip.js"></script>
+  </body>
+</html>
