@@ -50,8 +50,13 @@
       },
       {
         "title": "Aula 9: Comentários, Atribuição e If Abreviado",
-        "description": "Aprenda a usar comentários para documentar, operadores de atribuição para simplificar, o operador ternário para condensar condicionais e o if abreviado para um código mais limpo.",
+        "description": "Nesta aula, você usará comentários para documentar, operadores de atribuição para simplificar, o operador ternário para condensar condicionais e o if abreviado.",
         "link": "modulos/modulo1/aula9.html"
+      },
+      {
+        "title": "Aula 10: Escopo de Função em JavaScript",
+        "description": "Nesta aula, você aprenderá sobre o conceito de escopo de função, escopo de bloco e boas práticas para evitar variáveis globais em JavaScript, além de entender o uso de const e let para controle de escopo.",
+        "link": "modulos/modulo1/aula10.html"
       }
     ]
   },
