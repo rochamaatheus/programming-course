@@ -1,6 +1,6 @@
 // Função para criar os cards a partir dos dados das aulas
 function criarCards(aulas, container) {
-  aulas.forEach((aula) => {
+  aulas.forEach(aula => {
     const card = document.createElement('a');
     card.className = 'card';
     card.href = aula.link;
@@ -25,7 +25,7 @@ function criarCards(aulas, container) {
 function criarModulos(modulos) {
   const mainContainer = document.getElementById('cards-container');
 
-  modulos.forEach((modulo) => {
+  modulos.forEach(modulo => {
     // Cria o container do módulo
     const moduloContainer = document.createElement('div');
     moduloContainer.className = 'modulo';
@@ -59,16 +59,16 @@ function criarModulos(modulos) {
 
 // Carregar os dados dos módulos a partir do JSON
 fetch('artigos.json')
-  .then((response) => {
+  .then(response => {
     if (!response.ok) {
       throw new Error('Erro ao carregar o arquivo JSON');
     }
     return response.json();
   })
-  .then((data) => {
+  .then(data => {
     criarModulos(data);
   })
-  .catch((error) => {
+  .catch(error => {
     console.error('Erro:', error);
     const container = document.getElementById('cards-container');
     container.innerHTML =

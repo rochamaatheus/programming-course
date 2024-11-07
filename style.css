@@ -63,10 +63,37 @@ main {
 
 /* Container das aulas dentro do módulo */
 .aulas-container {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(250px, 1fr)
+  ); /* Define uma largura mínima de 250px */
   gap: 20px;
-  justify-content: flex-start;
+  justify-items: center;
+  align-items: start;
+}
+
+.aulas-container .card {
+  width: 100%; /* Faz os cards ocuparem toda a largura da coluna */
+  max-width: 280px; /* Define uma largura máxima para os cards */
+  height: 100%;
+  overflow: hidden;
+}
+
+.aulas-container .card .card-content p {
+  margin: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+@media (max-width: 616px) {
+  .aulas-container {
+    grid-template-columns: 1fr;
+  }
+  .aulas-container .card {
+    max-width: fit-content;
+  }
 }
 
 /* Estilos dos cards */
@@ -78,7 +105,7 @@ main {
   text-decoration: none;
   color: inherit;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s;
+  transition: transform 0.3s;
 }
 
 .card:hover {
