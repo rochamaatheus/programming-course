@@ -9,7 +9,7 @@
         "link": "modulos/modulo1/aula1.html"
       },
       {
-        "title": "Aula 2: Variáveis",
+        "title": "Aula 2: Variáveis em JavaScript",
         "description": "Nesta aula você irá aprender alguns conceitos de variáveis e como elas se comportam no JavaScript.",
         "link": "modulos/modulo1/aula2.html"
       },
@@ -47,6 +47,11 @@
         "title": "Aula 8: Arrays e Loops em JavaScript",
         "description": "Nesta aula, você irá aprender sobre arrays e loops, explorando métodos úteis e estruturas de repetição para manipular coleções de dados.",
         "link": "modulos/modulo1/aula8.html"
+      },
+      {
+        "title": "Aula 9: Comentários, Atribuição e If Abreviado",
+        "description": "Aprenda a usar comentários para documentar, operadores de atribuição para simplificar, o operador ternário para condensar condicionais e o if abreviado para um código mais limpo.",
+        "link": "modulos/modulo1/aula9.html"
       }
     ]
   },
