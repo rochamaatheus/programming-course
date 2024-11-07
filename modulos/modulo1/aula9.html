@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Estilos principais -->
+    <link rel="stylesheet" href="../../util/comumAula.css" />
+    <!-- Estilos para o Prism.js -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css"
+      rel="stylesheet"
+    />
+    <!-- Script do Prism.js -->
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"
+    ></script>
+    <title>
+      Aula 5: Comentários, Operadores de Atribuição e If Abreviado em JavaScript
+    </title>
+  </head>
+  <body>
+    <header>
+      <h1>
+        Comentários, Operadores de Atribuição e If Abreviado em JavaScript
+      </h1>
+    </header>
+    <main>
+      <div class="article-content">
+        <a href="../../index.html" class="button"
+          >Voltar para a Página Principal</a
+        >
+
+        <!-- Introdução -->
+        <h2>Introdução</h2>
+        <p>
+          Nesta aula, abordaremos
+          <span
+            class="term"
+            data-tooltip="Comentários são trechos de código que não são executados e servem para documentar o código."
+            >Comentários</span
+          >,
+          <span
+            class="term"
+            data-tooltip="Operadores de atribuição são utilizados para atribuir valores às variáveis, podendo também realizar operações matemáticas de forma abreviada."
+            >Operadores de Atribuição</span
+          >, o
+          <span
+            class="term"
+            data-tooltip="O operador ternário é uma forma abreviada de expressar condicionais simples, substituindo if e else."
+            >Operador Ternário</span
+          >
+          e o
+          <span
+            class="term"
+            data-tooltip="If abreviado permite escrever condicionais de forma mais concisa quando há apenas uma instrução a ser executada."
+            >If Abreviado</span
+          >
+          em JavaScript. Vamos explorar cada um desses tópicos com exemplos
+          práticos.
+        </p>
+
+        <!-- Comentários -->
+        <h2>Comentários em JavaScript</h2>
+        <p>
+          Comentários são essenciais para documentar o código, tornando-o mais
+          compreensível para outros desenvolvedores e para você mesmo no futuro.
+          Existem dois tipos de comentários em JavaScript:
+        </p>
+
+        <h3>Comentário de Uma Linha</h3>
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">// Este é um comentário de uma linha</code></pre>
+        </div>
+
+        <h3>Comentário de Múltiplas Linhas</h3>
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+/*
+  Este é um comentário
+  de múltiplas linhas
+  em JavaScript
+*/
+          </code></pre>
+        </div>
+
+        <p>
+          <strong>Nota:</strong> Comentar linhas de código pode ser útil para
+          testes, mas evite deixar código comentado no arquivo final para manter
+          a limpeza e eficiência do código.
+        </p>
+
+        <!-- Operadores de Atribuição -->
+        <h2>Operadores de Atribuição</h2>
+        <p>
+          Operadores de atribuição permitem realizar operações matemáticas de
+          forma mais concisa. Eles combinam uma operação com a atribuição do
+          resultado à variável. Vamos ver alguns exemplos:
+        </p>
+
+        <h3>Exemplos de Operadores de Atribuição</h3>
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+var saldo = 200;
+var deposito = 50;
+
+// Adiciona deposito ao saldo
+saldo += deposito; // saldo = saldo + deposito (250)
+
+// Subtrai depósito do saldo
+saldo -= deposito; // saldo = saldo - deposito (200)
+
+// Multiplica saldo por um fator
+saldo *= 2; // saldo = saldo * 2 (400)
+
+// Divide saldo por um divisor
+saldo /= 4; // saldo = saldo / 4 (100)
+
+// Obtém o resto da divisão do saldo
+saldo %= 30; // saldo = saldo % 30 (10)
+
+// Eleva saldo a uma potência
+saldo **= 3; // saldo = saldo ** 3 (1000)
+          </code></pre>
+        </div>
+
+        <!-- Operador Ternário -->
+        <h2>Operador Ternário</h2>
+        <p>
+          O operador ternário é uma forma abreviada de escrever condicionais
+          simples. Ele segue a sintaxe:
+        </p>
+
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">condição ? expressão1 : expressão2;</code></pre>
+        </div>
+
+        <p>Vamos ver um exemplo prático:</p>
+
+        <h3>Exemplo de Operador Ternário</h3>
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+var nota = 85;
+var resultado = (nota >= 70) ? 'Aprovado' : 'Reprovado';
+console.log(resultado); // Aprovado
+          </code></pre>
+        </div>
+
+        <p>
+          Este operador é especialmente útil quando precisamos atribuir valores
+          a variáveis com base em uma condição.
+        </p>
+
+        <!-- If Abreviado -->
+        <h2>If Abreviado</h2>
+        <p>
+          Quando a estrutura condicional possui apenas uma linha de código a ser
+          executada, podemos omitir as chaves `{}` para tornar o código mais
+          conciso. Veja o exemplo abaixo:
+        </p>
+
+        <h3>Exemplo de If Abreviado</h3>
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+var possuiVaga = false;
+
+if(possuiVaga) console.log('Vaga disponível');
+else console.log('Vaga indisponível');
+
+// Ou, em outra linha
+if(possuiVaga)
+  console.log('Vaga disponível');
+else
+  console.log('Vaga indisponível');
+          </code></pre>
+        </div>
+
+        <p>
+          <em>Dica:</em> A segunda opção, onde cada parte do if e else está em
+          uma linha separada, melhora a legibilidade do código.
+        </p>
+
+        <!-- Exercícios -->
+        <h2>Exercícios</h2>
+        <p>
+          Vamos praticar o que aprendemos! Tente resolver os exercícios abaixo e
+          depois verifique suas respostas.
+        </p>
+
+        <ol>
+          <li>
+            Some 300 ao valor de <code class="destaque">altura</code> abaixo,
+            atribuindo o novo valor a <code class="destaque">altura</code>
+            <div class="code-block">
+              <button class="copy-button">Copiar</button>
+              <pre><code class="language-javascript">
+var altura = 170;
+            </code></pre>
+            </div>
+          </li>
+          <li>
+            Atribua <code class="destaque">true</code> para a variável
+            <code class="destaque">eligivelDesconto</code>, caso o cliente
+            possua mais de 3 compras e seja membro VIP. E
+            <code class="destaque">false</code> caso contrário.
+            <div class="code-block">
+              <button class="copy-button">Copiar</button>
+              <pre><code class="language-javascript">
+var numeroCompras = 5;
+var membroVIP = true;
+var eligivelDesconto;
+            </code></pre>
+            </div>
+          </li>
+          <li>
+            Utilize o operador ternário para verificar se a temperatura está
+            acima de 30 graus. Se estiver, atribua 'Está quente' à variável
+            <code class="destaque">clima</code>, caso contrário, atribua 'Está
+            ameno'.
+            <div class="code-block">
+              <button class="copy-button">Copiar</button>
+              <pre><code class="language-javascript">
+var temperatura = 25;
+var clima;
+            </code></pre>
+            </div>
+          </li>
+          <li>
+            Reescreva o seguinte código utilizando if abreviado:
+            <div class="code-block">
+              <button class="copy-button">Copiar</button>
+              <pre><code class="language-javascript">
+var temAssinatura = true;
+
+if(temAssinatura) {
+  console.log('Acesso liberado');
+} else {
+  console.log('Acesso negado');
+}
+            </code></pre>
+            </div>
+          </li>
+          <li>
+            Utilize operadores de atribuição para atualizar o valor de
+            <code class="destaque">pontuacao</code>: Adicione 50 pontos,
+            subtraia 20 pontos e multiplique por 2.
+            <div class="code-block">
+              <button class="copy-button">Copiar</button>
+              <pre><code class="language-javascript">
+var pontuacao = 100;
+            </code></pre>
+            </div>
+          </li>
+        </ol>
+
+        <!-- Conclusão -->
+        <h2>Conclusão</h2>
+        <p>
+          Nesta aula, exploramos como utilizar comentários para documentar seu
+          código, operadores de atribuição para escrever expressões matemáticas
+          de forma mais concisa, o operador ternário como uma forma abreviada de
+          condicionais e o if abreviado para tornar suas estruturas condicionais
+          mais limpas e legíveis. Dominar esses conceitos é fundamental para
+          escrever código eficiente e de fácil manutenção.
+        </p>
+      </div>
+    </main>
+    <footer>
+      <p>&copy; 2024 Matheus Rocha</p>
+    </footer>
+    <!-- Scripts personalizados -->
+    <script src="../../util/codeBlock.js"></script>
+    <script src="../../util/backToTop.js"></script>
+    <script src="../../util/tooltip.js"></script>
+  </body>
+</html>
