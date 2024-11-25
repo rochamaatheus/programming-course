@@ -57,6 +57,11 @@
         "title": "Aula 10: Escopo de Função em JavaScript",
         "description": "Nesta aula, você aprenderá sobre o conceito de escopo de função, escopo de bloco e boas práticas para evitar variáveis globais em JavaScript, além de entender o uso de const e let para controle de escopo.",
         "link": "modulos/modulo1/aula10.html"
+      },
+      {
+        "title": "Aula 11: Projeto - Campo Minado com JavaScript",
+        "description": "Nesta aula, você aprenderá com os conhecimentos adquiridos no curso, como criar o jogo \"Campo Minado\".",
+        "link": "modulos/modulo1/aula11.html"
       }
     ]
   },
