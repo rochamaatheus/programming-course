@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Estilos principais -->
+    <link rel="stylesheet" href="../../util/comumAula.css" />
+    <!-- Estilos para o Prism.js -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css"
+      rel="stylesheet"
+    />
+    <!-- Script do Prism.js -->
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"
+    ></script>
+    <title>
+      Aula 11: Criando um Jogo de Campo Minado em JavaScript para Terminal
+    </title>
+  </head>
+  <body>
+    <header>
+      <h1>Criando um Jogo de Campo Minado em JavaScript para Terminal</h1>
+    </header>
+    <main>
+      <div class="article-content">
+        <a href="../../index.html" class="button"
+          >Voltar para a Página Principal</a
+        >
+
+        <!-- Descrição -->
+        <h2>Descrição</h2>
+        <p>
+          Nesta aula, vamos aprender a criar um jogo de
+          <span
+            class="term"
+            data-tooltip="Campo Minado é um jogo onde o jogador deve revelar células de um tabuleiro sem acertar uma mina."
+            >Campo Minado</span
+          >
+          utilizando <code class="destaque">JavaScript</code> para ser executado
+          no terminal. Este projeto nos ajudará a entender conceitos importantes
+          como manipulação de arrays, lógica de programação, recursão, Promises
+          e interação com o usuário via terminal.
+        </p>
+
+        <!-- Passo 1: Configuração do Ambiente -->
+        <h2>Passo 1: Configuração do Ambiente</h2>
+        <p>
+          Antes de começarmos a codificar, precisamos garantir que temos o
+          ambiente configurado corretamente.
+        </p>
+        <ol>
+          <li>
+            <strong>Instale o Node.js:</strong> O Node.js permite que executemos
+            JavaScript no terminal. Você pode baixá-lo em
+            <a href="https://nodejs.org" target="_blank">nodejs.org</a>.
+          </li>
+          <li>
+            <strong>Editor de Código:</strong> Utilize um editor de código de
+            sua preferência, como VSCode, Sublime Text ou Atom.
+          </li>
+          <li>
+            <strong>Crie um Diretório para o Projeto:</strong> Organize seu
+            projeto criando uma pasta específica, por exemplo,
+            <code class="destaque">campoMinado</code>.
+          </li>
+        </ol>
+
+        <!-- Passo 2: Estrutura Básica do Código -->
+        <h2>Passo 2: Estrutura Básica do Código</h2>
+        <p>
+          Vamos começar criando a estrutura básica do nosso jogo. Crie um
+          arquivo chamado <code class="destaque">campoMinado.js</code> dentro do
+          diretório do projeto e adicione o seguinte código:
+        </p>
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+// Importa o módulo readline para interagir com o usuário
+const readline = require('readline');
+
+// Função principal que inicia o jogo
+async function jogar() {
+  // Configuração da interface de leitura
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+  });
+
+  // Função para fazer perguntas de forma assíncrona
+  const question = (str) => new Promise((resolve) => rl.question(str, resolve));
+
+  // Encerrar a interface de leitura ao finalizar o jogo
+  rl.close();
+}
+
+// Iniciar o jogo
+jogar();
+          </code></pre>
+        </div>
+        <p>
+          Este código configura a base para interagir com o usuário no terminal
+          usando o módulo <code class="destaque">readline</code> do Node.js.
+          <span
+            class="term"
+            data-tooltip="Promises são objetos que representam a eventual conclusão ou falha de uma operação assíncrona."
+            >Promises</span
+          >
+          são utilizados aqui para lidar com as entradas do usuário de forma
+          assíncrona.
+        </p>
+
+        <!-- Passo 3: Criando o Tabuleiro -->
+        <h2>Passo 3: Criando o Tabuleiro</h2>
+        <p>
+          O tabuleiro é representado por uma matriz bidimensional. Vamos criar
+          uma função para inicializar o tabuleiro com células ocultas.
+        </p>
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+// Função para criar o tabuleiro
+function criarTabuleiro(tamanho) {
+  const tabuleiro = Array.from({ length: tamanho }, () => Array(tamanho).fill('.'));
+  return tabuleiro;
+}
+
+// Exemplo de uso
+const tamanho = 5;
+const tabuleiro = criarTabuleiro(tamanho);
+console.log(tabuleiro);
+          </code></pre>
+        </div>
+        <p>
+          Neste exemplo, criamos um tabuleiro 5x5 preenchido com pontos
+          <code class="destaque">.</code>, representando células ocultas.
+        </p>
+
+        <!-- Passo 4: Posicionando as Minas -->
+        <h2>Passo 4: Posicionando as Minas</h2>
+        <p>
+          Agora, vamos adicionar minas aleatórias no tabuleiro. Para isso,
+          utilizaremos a função <code class="destaque">Math.random()</code> para
+          gerar posições aleatórias.
+        </p>
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+// Função para criar o tabuleiro com minas
+function criarTabuleiro(tamanho, minas) {
+  const tabuleiro = Array.from({ length: tamanho }, () => Array(tamanho).fill('.'));
+  const posicoesMinas = new Set();
+
+  while (posicoesMinas.size < minas) {
+    const x = Math.floor(Math.random() * tamanho);
+    const y = Math.floor(Math.random() * tamanho);
+    posicoesMinas.add(`${x},${y}`);
+  }
+
+  for (const pos of posicoesMinas) {
+    const [x, y] = pos.split(',').map(Number);
+    tabuleiro[x][y] = '*';
+  }
+
+  return { tabuleiro, posicoesMinas };
+}
+
+// Exemplo de uso
+const tamanho = 5;
+const minas = 5;
+const { tabuleiro, posicoesMinas } = criarTabuleiro(tamanho, minas);
+console.log(tabuleiro);
+console.log(posicoesMinas);
+          </code></pre>
+        </div>
+        <p>
+          Aqui, utilizamos um <code class="destaque">Set</code> para garantir
+          que as posições das minas sejam únicas. As minas são representadas
+          pelo caractere <code class="destaque">*</code>.
+        </p>
+        <p>
+          <span
+            class="term"
+            data-tooltip="Um Set é uma estrutura de dados que armazena valores únicos. Em JavaScript, ele é usado para garantir que não haja duplicatas."
+            >Set</span
+          >
+          é muito útil aqui para evitar que duas minas sejam colocadas na mesma
+          posição.
+        </p>
+
+        <!-- Passo 5: Exibindo o Tabuleiro -->
+        <h2>Passo 5: Exibindo o Tabuleiro</h2>
+        <p>
+          Vamos criar uma função para exibir o tabuleiro no terminal, mostrando
+          apenas as células reveladas pelo jogador.
+        </p>
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+// Função para exibir o tabuleiro
+function mostrarTabuleiro(tabuleiro, revelado = null) {
+  if (!revelado) {
+    revelado = Array.from({ length: tabuleiro.length }, () => Array(tabuleiro.length).fill(false));
+  }
+
+  // Exibir índices das colunas
+  process.stdout.write('\n   ');
+  for (let i = 0; i < tabuleiro.length; i++) {
+    process.stdout.write(` ${i} `);
+  }
+  console.log();
+
+  // Exibir linhas com índices
+  for (let i = 0; i < tabuleiro.length; i++) {
+    process.stdout.write(` ${i} `);
+    for (let j = 0; j < tabuleiro.length; j++) {
+      if (revelado[i][j]) {
+        process.stdout.write(` ${tabuleiro[i][j]} `);
+      } else {
+        process.stdout.write(' . ');
+      }
+    }
+    console.log();
+  }
+}
+
+// Exemplo de uso
+const tamanho = 5;
+const minas = 5;
+const { tabuleiro, posicoesMinas } = criarTabuleiro(tamanho, minas);
+const revelado = Array.from({ length: tamanho }, () => Array(tamanho).fill(false));
+mostrarTabuleiro(tabuleiro, revelado);
+          </code></pre>
+        </div>
+        <p>
+          A função <code class="destaque">mostrarTabuleiro</code> exibe o
+          tabuleiro com índices de linha e coluna, mostrando apenas as células
+          reveladas. Células ocultas são representadas por
+          <code class="destaque">.</code>.
+        </p>
+
+        <!-- Passo 6: Contando Vizinhos -->
+        <h2>Passo 6: Contando Vizinhos</h2>
+        <p>
+          Para cada célula revelada, precisamos contar quantas minas estão ao
+          seu redor. Isso ajudará o jogador a deduzir onde estão as minas.
+        </p>
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+// Função para contar minas vizinhas
+function contarVizinhos(tabuleiro, x, y) {
+  const tamanho = tabuleiro.length;
+  const direcoes = [
+    [-1, -1], [-1, 0], [-1, 1],
+    [0, -1],          [0, 1],
+    [1, -1],  [1, 0],  [1, 1]
+  ];
+  let contador = 0;
+
+  for (const [dx, dy] of direcoes) {
+    const nx = x + dx;
+    const ny = y + dy;
+    if (nx >= 0 && nx < tamanho && ny >= 0 && ny < tamanho && tabuleiro[nx][ny] === '*') {
+      contador++;
+    }
+  }
+  return contador;
+}
+
+// Exemplo de uso
+const x = 2;
+const y = 2;
+const vizinhos = contarVizinhos(tabuleiro, x, y);
+console.log(`Número de minas ao redor de (${x}, ${y}): ${vizinhos}`);
+          </code></pre>
+        </div>
+        <p>
+          A função <code class="destaque">contarVizinhos</code> verifica todas
+          as oito posições adjacentes a uma célula e conta quantas delas contêm
+          minas.
+        </p>
+
+        <!-- Passo 7: Revelando Células -->
+        <h2>Passo 7: Revelando Células</h2>
+        <p>
+          Quando o jogador escolhe uma célula para revelar, precisamos atualizar
+          o tabuleiro e, se a célula não tiver minas adjacentes, revelar
+          recursivamente as células vizinhas.
+        </p>
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+// Função para revelar uma célula
+function revelar(tabuleiro, x, y, revelado) {
+  if (revelado[x][y]) {
+    return;
+  }
+  revelado[x][y] = true;
+
+  if (tabuleiro[x][y] === '*') {
+    return;
+  }
+
+  const vizinhos = contarVizinhos(tabuleiro, x, y);
+  tabuleiro[x][y] = vizinhos > 0 ? vizinhos.toString() : ' ';
+
+  if (vizinhos === 0) {
+    const direcoes = [
+      [-1, -1], [-1, 0], [-1, 1],
+      [0, -1],          [0, 1],
+      [1, -1],  [1, 0],  [1, 1]
+    ];
+    for (const [dx, dy] of direcoes) {
+      const nx = x + dx;
+      const ny = y + dy;
+      if (nx >= 0 && nx < tabuleiro.length && ny >= 0 && ny < tabuleiro.length) {
+        revelar(tabuleiro, nx, ny, revelado);
+      }
+    }
+  }
+}
+
+// Exemplo de uso
+revelar(tabuleiro, 2, 2, revelado);
+mostrarTabuleiro(tabuleiro, revelado);
+          </code></pre>
+        </div>
+        <p>
+          A função <code class="destaque">revelar</code> marca a célula como
+          revelada, conta os vizinhos e, se não houver minas ao redor, revela
+          recursivamente as células adjacentes.
+        </p>
+        <p>
+          <span
+            class="term"
+            data-tooltip="Recursão é quando uma função chama a si mesma para resolver subproblemas menores."
+            >Recursão</span
+          >
+          é uma técnica poderosa que utilizamos aqui para revelar todas as
+          células vazias adjacentes automaticamente.
+        </p>
+
+        <!-- Passo 8: Controle do Fluxo do Jogo -->
+        <h2>Passo 8: Controle do Fluxo do Jogo</h2>
+        <p>
+          Agora, vamos integrar todas as funções anteriores para controlar o
+          fluxo do jogo, interagindo com o jogador e determinando as condições
+          de vitória ou derrota.
+        </p>
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+// Função principal que inicia o jogo
+async function jogar() {
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+  });
+
+  // Função para fazer perguntas de forma assíncrona usando Promises
+  const question = (str) => new Promise((resolve) => rl.question(str, resolve));
+
+  const tamanho = parseInt(await question('Digite o tamanho do tabuleiro (Ex: 5 para 5x5): '), 10);
+  const minas = parseInt(await question('Digite o número de minas: '), 10);
+
+  const { tabuleiro, posicoesMinas } = criarTabuleiro(tamanho, minas);
+  const revelado = Array.from({ length: tamanho }, () => Array(tamanho).fill(false));
+  let fimDeJogo = false;
+
+  while (!fimDeJogo) {
+    mostrarTabuleiro(tabuleiro, revelado);
+    try {
+      const entrada = await question('Digite a posição para revelar (linha coluna): ');
+      const [xStr, yStr] = entrada.trim().split(' ');
+      const x = parseInt(xStr, 10);
+      const y = parseInt(yStr, 10);
+
+      if (isNaN(x) || isNaN(y) || x < 0 || x >= tamanho || y < 0 || y >= tamanho) {
+        console.log('Entrada inválida! Tente novamente.');
+        continue;
+      }
+
+      if (posicoesMinas.has(`${x},${y}`)) {
+        console.log('\n💥 Você atingiu uma mina! Fim de jogo.');
+        fimDeJogo = true;
+      } else {
+        revelar(tabuleiro, x, y, revelado);
+        const todasReveladas = tabuleiro.every((linha, i) =>
+          linha.every((celula, j) => revelado[i][j] || celula === '*')
+        );
+        if (todasReveladas) {
+          console.log('\n🎉 Parabéns! Você venceu!');
+          fimDeJogo = true;
+        }
+      }
+    } catch (error) {
+      console.log('Ocorreu um erro! Tente novamente.');
+    }
+  }
+
+  // Mostrar tabuleiro final
+  mostrarTabuleiro(tabuleiro, Array.from({ length: tamanho }, () => Array(tamanho).fill(true)));
+  rl.close();
+}
+
+// Iniciar o jogo
+jogar();
+          </code></pre>
+        </div>
+        <p>
+          Neste trecho, controlamos o fluxo do jogo utilizando um loop
+          <code class="destaque">while</code> que continua até que o jogador
+          vença ou perca. Solicitamos entradas do usuário, validamos as posições
+          escolhidas e atualizamos o estado do jogo de acordo.
+        </p>
+        <p>
+          <span
+            class="term"
+            data-tooltip="O método every() verifica se todos os elementos de um array satisfazem uma condição."
+            >Método every()</span
+          >
+          é utilizado para verificar se todas as células não-minadas foram
+          reveladas, determinando assim a vitória do jogador.
+        </p>
+        <p>
+          <span
+            class="term"
+            data-tooltip="Promises são objetos que representam a eventual conclusão ou falha de uma operação assíncrona."
+            >Promises</span
+          >
+          são fundamentais para lidar com operações assíncronas, como as
+          entradas do usuário, permitindo que o código espere pelas respostas
+          antes de prosseguir. Utilizamos
+          <code class="destaque">async/await</code> para simplificar o uso de
+          Promises, tornando o código mais legível e fácil de entender.
+        </p>
+
+        <!-- Ajustes e Melhorias -->
+        <h2>Ajustes e Melhorias</h2>
+        <p>
+          Para tornar o jogo mais robusto e amigável, realizamos alguns ajustes:
+        </p>
+        <ul>
+          <li>
+            <strong>Validação de Entrada:</strong> Garantimos que as entradas do
+            usuário sejam válidas e dentro dos limites do tabuleiro.
+          </li>
+          <li>
+            <strong>Exibição Final:</strong> Ao término do jogo, exibimos o
+            tabuleiro completo revelando todas as minas.
+          </li>
+          <li>
+            <strong
+              >Uso de <code class="destaque">Set</code> para Posições de
+              Minas:</strong
+            >
+            Facilita a verificação rápida se uma posição contém uma mina.
+          </li>
+          <li>
+            <strong>Formatação do Tabuleiro:</strong> Melhoramos a exibição do
+            tabuleiro para uma visualização mais clara no terminal.
+          </li>
+        </ul>
+
+        <!-- Código Completo -->
+        <h2>Código Completo</h2>
+        <p>
+          Abaixo está o código completo do jogo de Campo Minado em JavaScript
+          para terminal:
+        </p>
+        <div class="code-block">
+          <button class="copy-button">Copiar</button>
+          <pre><code class="language-javascript">
+// Importa o módulo readline para interagir com o usuário
+const readline = require('readline');
+
+// Função para criar o tabuleiro com minas
+function criarTabuleiro(tamanho, minas) {
+  const tabuleiro = Array.from({ length: tamanho }, () => Array(tamanho).fill('.'));
+  const posicoesMinas = new Set();
+
+  while (posicoesMinas.size < minas) {
+    const x = Math.floor(Math.random() * tamanho);
+    const y = Math.floor(Math.random() * tamanho);
+    posicoesMinas.add(`${x},${y}`);
+  }
+
+  for (const pos of posicoesMinas) {
+    const [x, y] = pos.split(',').map(Number);
+    tabuleiro[x][y] = '*';
+  }
+
+  return { tabuleiro, posicoesMinas };
+}
+
+// Função para exibir o tabuleiro
+function mostrarTabuleiro(tabuleiro, revelado = null) {
+  if (!revelado) {
+    revelado = Array.from({ length: tabuleiro.length }, () => Array(tabuleiro.length).fill(false));
+  }
+
+  // Exibir índices das colunas
+  process.stdout.write('\n   ');
+  for (let i = 0; i < tabuleiro.length; i++) {
+    process.stdout.write(` ${i} `);
+  }
+  console.log();
+
+  // Exibir linhas com índices
+  for (let i = 0; i < tabuleiro.length; i++) {
+    process.stdout.write(` ${i} `);
+    for (let j = 0; j < tabuleiro.length; j++) {
+      if (revelado[i][j]) {
+        process.stdout.write(` ${tabuleiro[i][j]} `);
+      } else {
+        process.stdout.write(' . ');
+      }
+    }
+    console.log();
+  }
+}
+
+// Função para contar minas vizinhas
+function contarVizinhos(tabuleiro, x, y) {
+  const tamanho = tabuleiro.length;
+  const direcoes = [
+    [-1, -1], [-1, 0], [-1, 1],
+    [0, -1],          [0, 1],
+    [1, -1],  [1, 0],  [1, 1]
+  ];
+  let contador = 0;
+
+  for (const [dx, dy] of direcoes) {
+    const nx = x + dx;
+    const ny = y + dy;
+    if (nx >= 0 && nx < tamanho && ny >= 0 && ny < tamanho && tabuleiro[nx][ny] === '*') {
+      contador++;
+    }
+  }
+  return contador;
+}
+
+// Função para revelar uma célula
+function revelar(tabuleiro, x, y, revelado) {
+  if (revelado[x][y]) {
+    return;
+  }
+  revelado[x][y] = true;
+
+  if (tabuleiro[x][y] === '*') {
+    return;
+  }
+
+  const vizinhos = contarVizinhos(tabuleiro, x, y);
+  tabuleiro[x][y] = vizinhos > 0 ? vizinhos.toString() : ' ';
+
+  if (vizinhos === 0) {
+    const direcoes = [
+      [-1, -1], [-1, 0], [-1, 1],
+      [0, -1],          [0, 1],
+      [1, -1],  [1, 0],  [1, 1]
+    ];
+    for (const [dx, dy] of direcoes) {
+      const nx = x + dx;
+      const ny = y + dy;
+      if (nx >= 0 && nx < tabuleiro.length && ny >= 0 && ny < tabuleiro.length) {
+        revelar(tabuleiro, nx, ny, revelado);
+      }
+    }
+  }
+}
+
+// Função principal que inicia o jogo
+async function jogar() {
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+  });
+
+  // Função para fazer perguntas de forma assíncrona usando Promises
+  const question = (str) => new Promise((resolve) => rl.question(str, resolve));
+
+  const tamanho = parseInt(await question('Digite o tamanho do tabuleiro (Ex: 5 para 5x5): '), 10);
+  const minas = parseInt(await question('Digite o número de minas: '), 10);
+
+  const { tabuleiro, posicoesMinas } = criarTabuleiro(tamanho, minas);
+  const revelado = Array.from({ length: tamanho }, () => Array(tamanho).fill(false));
+  let fimDeJogo = false;
+
+  while (!fimDeJogo) {
+    mostrarTabuleiro(tabuleiro, revelado);
+    try {
+      const entrada = await question('Digite a posição para revelar (linha coluna): ');
+      const [xStr, yStr] = entrada.trim().split(' ');
+      const x = parseInt(xStr, 10);
+      const y = parseInt(yStr, 10);
+
+      if (isNaN(x) || isNaN(y) || x < 0 || x >= tamanho || y < 0 || y >= tamanho) {
+        console.log('Entrada inválida! Tente novamente.');
+        continue;
+      }
+
+      if (posicoesMinas.has(`${x},${y}`)) {
+        console.log('\n💥 Você atingiu uma mina! Fim de jogo.');
+        fimDeJogo = true;
+      } else {
+        revelar(tabuleiro, x, y, revelado);
+        const todasReveladas = tabuleiro.every((linha, i) =>
+          linha.every((celula, j) => revelado[i][j] || celula === '*')
+        );
+        if (todasReveladas) {
+          console.log('\n🎉 Parabéns! Você venceu!');
+          fimDeJogo = true;
+        }
+      }
+    } catch (error) {
+      console.log('Ocorreu um erro! Tente novamente.');
+    }
+  }
+
+  // Mostrar tabuleiro final
+  mostrarTabuleiro(tabuleiro, Array.from({ length: tamanho }, () => Array(tamanho).fill(true)));
+  rl.close();
+}
+
+// Iniciar o jogo
+jogar();
+          </code></pre>
+        </div>
+        <p>
+          Salve este código no arquivo
+          <code class="destaque">campoMinado.js</code> e execute-o no terminal
+          usando o comando:
+        </p>
+        <pre><code class="destaque">node campoMinado.js</code></pre>
+        <p>Agora você pode jogar o Campo Minado diretamente no seu terminal!</p>
+
+        <!-- Conceitos Utilizados -->
+        <h2>Conceitos Utilizados</h2>
+        <ul>
+          <li>
+            <strong>Manipulação de Arrays:</strong> Utilizamos arrays
+            bidimensionais para representar o tabuleiro e o estado de revelação.
+          </li>
+          <li>
+            <strong>Recursão:</strong> A função
+            <code class="destaque">revelar</code> utiliza recursão para revelar
+            células adjacentes sem minas.
+          </li>
+          <li>
+            <strong>Interação com o Usuário:</strong> Usamos o módulo
+            <code class="destaque">readline</code> do Node.js para receber
+            entradas do usuário no terminal.
+          </li>
+          <li>
+            <strong>Estruturas de Dados Avançadas:</strong> Utilizamos
+            <code class="destaque">Set</code> para armazenar as posições das
+            minas, garantindo unicidade.
+          </li>
+          <li>
+            <strong>Controle de Fluxo:</strong> Implementamos loops e
+            condicionais para controlar o fluxo do jogo.
+          </li>
+          <li>
+            <strong>Promises:</strong> Utilizamos Promises para lidar com
+            operações assíncronas, como as entradas do usuário. Isso nos permite
+            escrever código assíncrono de maneira mais legível e gerenciável.
+          </li>
+          <li>
+            <strong>Async/Await:</strong> Utilizamos
+            <code class="destaque">async/await</code> para simplificar o uso de
+            Promises, tornando o código mais linear e fácil de entender.
+          </li>
+        </ul>
+
+        <!-- Exercícios -->
+        <h2>Exercícios</h2>
+        <p>Pratique os conceitos aprendidos com os exercícios abaixo:</p>
+        <ol>
+          <li>
+            <strong>Adicionar Marcação de Bandeira:</strong>
+            <p>
+              Modifique o jogo para permitir que o jogador marque uma célula com
+              uma bandeira, indicando a suspeita de mina. Adicione comandos para
+              alternar entre revelar e marcar células.
+            </p>
+          </li>
+          <li>
+            <strong>Melhorar a Interface:</strong>
+            <p>
+              Aprimore a exibição do tabuleiro no terminal, utilizando cores
+              para diferenciar células reveladas, minas e bandeiras. Você pode
+              utilizar sequências de escape ANSI para cores.
+            </p>
+          </li>
+          <li>
+            <strong>Implementar uma Função de Reset:</strong>
+            <p>
+              Adicione uma opção para o jogador reiniciar o jogo após o término,
+              sem precisar reiniciar o programa manualmente.
+            </p>
+          </li>
+        </ol>
+
+        <!-- Conclusão -->
+        <h2>Conclusão</h2>
+        <p>
+          Neste tutorial, aprendemos a criar um jogo de Campo Minado em
+          JavaScript para ser executado no terminal. Exploramos conceitos
+          fundamentais como manipulação de arrays, recursão, interação com o
+          usuário, Promises e estruturas de dados avançadas. Este projeto não
+          apenas reforça sua compreensão de JavaScript, mas também aprimora suas
+          habilidades de lógica e resolução de problemas.
+        </p>
+        <p>
+          Continue praticando e explore novas funcionalidades para tornar seu
+          jogo ainda mais completo e desafiador!
+        </p>
+      </div>
+    </main>
+    <footer>
+      <p>&copy; 2024 Matheus Rocha</p>
+    </footer>
+    <!-- Scripts personalizados -->
+    <script src="../../util/codeBlock.js"></script>
+    <script src="../../util/backToTop.js"></script>
+    <script src="../../util/tooltip.js"></script>
+  </body>
+</html>
